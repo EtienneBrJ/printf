@@ -12,7 +12,7 @@ char *print_int(va_list args, char *flagstr)
 {
 	int ite, rem = 0, len = 0, num, num_decoy, is_negative = 0;
 
-	char *tmpstring, *resultstring;
+	char tmpstring[50], *resultstring;
 
 	if (args == NULL)
 		return(NULL);

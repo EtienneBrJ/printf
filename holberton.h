@@ -23,13 +23,12 @@ int _printf(const char *format, ...);
 char *(*get_cs_func(char c))(va_list, char *);
 
 int _putchar(char c);
-int _putnchar(char *buffer);
-char *_strcat(char *dest, char *src);
-char *print_int(va_list args, char *flagstr);
-char *flags_handler(char *flags, char *oristring, int is_negative);
-int _atoi(char *s);
 
-char *_print_int(va_list args, char *flagstr);
+int _putnchar(char *buffer);
+
+char *_strcat(char *dest, char *src);
+
+char *print_int(va_list args, char *flagstr);
 
 char *flags_handler(char *flags, char *oristring, int is_negative);
 

@@ -14,7 +14,7 @@ int _printf(const char *format, ...)
 	int i;
 	char *tmpBuffer;
 	char *buffer;
-	char *p;
+	char p[20];
 
 	va_start(args, format);
 
