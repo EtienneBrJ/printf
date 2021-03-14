@@ -23,7 +23,6 @@ int (*get_cs_func(char c))(va_list args, char *s) // for conversion specifiers
 		{"p", print_pointer};
 		{"r", print_rev_string};
 		{"R", pirnt_string_ROT13};
-		{"%", print_pourcentage};
 	};
 
 	int i;

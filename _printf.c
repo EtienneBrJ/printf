@@ -22,18 +22,30 @@ int _printf(const char *format, ...)
 
 	for (i = 0; format[i] != '\0'; i++)
 	{
-		if (format[i] == '%')
+		if (format[i] == '%' && format[i + 1] == '%')
 		{
 			i++;
-			while(get_cs_func(format[i]) == NULL && format[i])
+			_strcat(tmpBuffer, format[i]);
+			i++;
+		}
+		if (format[i] == '%' && format[i + 1])
+		{
+			i++;
+			while(get_cs_func(format[i]) == NULL && format[i] != '\0')
 			{
 				_strcat(tmpBuffer, format[i]);
 				i++;
 			}
-			pfunc = get_cs_func(format[i]);
-			buffer = pfunc(args, tmpBuffer);
+			if (format[i] == '\0')
+				_strcat(buffer, tmpBuffer);
+			else if (get_cs_func(format[i]))
+			{
+				pfunc = get_cs_func(format[i]);
+				_strcat(tmpBuffer, format[i]);
+				buffer = pfunc(args, tmpBuffer);
+			}
 		}
-		else if (!get_cs_fun(format[i]))
+		else if
 			_strcat(buffer, format[i]);
 	}
 
