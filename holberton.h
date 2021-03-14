@@ -31,4 +31,9 @@ char *_print_int(va_list args, char *flagstr);
 char *flags_handler(char *flags, char *oristring, int is_negative);
 
 int _atoi(char *s);
+
+void rev_string(char *s);
+
+char *rot13(char *s);
+
 #endif
