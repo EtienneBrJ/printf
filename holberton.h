@@ -25,4 +25,10 @@ int (*get_cs_func(char c))(va_list args, char *b);
 int _putchar(char c);
 
 char *_strcat(char *dest, char *src);
+
+char *_print_int(va_list args, char *flagstr);
+
+char *flags_handler(char *flags, char *oristring, int is_negative);
+
+int _atoi(char *s);
 #endif
