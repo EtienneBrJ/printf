@@ -8,7 +8,7 @@
  * Return: Our temporary buffer
  */
 
-char *_print_int(va_list args, char *flagstr)
+char *print_int(va_list args, char *flagstr)
 {
 	int ite, rem = 0, len = 0, num, num_decoy, is_negative = 0;
 
@@ -36,7 +36,7 @@ char *_print_int(va_list args, char *flagstr)
 	{
 		rem = num % 10;
 		num = num / 10;
-		tmpstring[len - (i + 1)] = rem + '0';
+		tmpstring[len - (ite + 1)] = rem + '0';
 	}
 	tmpstring[len] = '\0';
 
@@ -58,10 +58,13 @@ char *flags_handler(char *flags, char *oristring, int is_negative)
 	int ite1 = 0, ite2 = 0, ite3 = 0, plus_sign = 0, ignore_space = 0,
 		space_sign = 0, zero_is_fieldwidth = 0, justify_left = 0,
 		first_zero_seen = 0, zero_followers, signage_done = 0,
-	        precison_done = 0, short_long_done = 0, zero = 0;
+	        precison_done = 0, short_long_done = 0, zeros = 0, count = 0,
+		maximum_chars_int = 0, number_of_zero_int = 0,
+		field_width_int = 0, zeros_int = 0, spaces = 0,
+		number_of_zeros_int = 0;
 
 	char *tmpstring, *returnstring, *field_width, *number_of_zeros,
-		*maximum_chars, *flag%;
+		*maximum_chars, *flags_percent, *flagstr, *resultstring;
 
 	char flag;
 
@@ -147,23 +150,24 @@ char *flags_handler(char *flags, char *oristring, int is_negative)
 
 		else
 		{
-			flags%[0] = '%';
-			_strcat(flags%, flags);
-			return (flags%);
+			flags_percent[0] = '%';
+			flags_percent[1] = '\0';
+			_strcat(flags_percent, flags);
+			return (flags_percent);
 		}
 
 		ite1++;
 	}
 
 
-	while (args[count] != '\0')
+	while (oristring[count] != '\0')
 	{
 		count++;
 	}
 
-	if (maxium_chars != NULL)
+	if (maximum_chars != NULL)
 	{
-		maxium_chars_int = _atoi(maxium_chars);
+		maximum_chars_int = _atoi(maximum_chars);
 		zeros = maximum_chars_int - count;
 
 		while (zeros > 0)
@@ -183,7 +187,7 @@ char *flags_handler(char *flags, char *oristring, int is_negative)
 	else if (space_sign = 1 && is_negative != 1)
 	{
 		tmpstring[ite1] = ' ';
-		count++
+		count++;
 	}
 	else if (is_negative == 1)
 	{
@@ -205,7 +209,7 @@ char *flags_handler(char *flags, char *oristring, int is_negative)
 
 	}
 
-	_strcat(tmpstring, args);
+	_strcat(tmpstring, oristring);
 	ite3 = 0;
 
 	if (field_width != NULL)

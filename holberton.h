@@ -15,16 +15,19 @@
 typedef struct print
 {
 	char *m;
-	int (*func)(va_list args, char *b);
+        void (*func)(va_list args, char *b);
 } print_t;
 
 int _printf(const char *format, ...);
 
-int (*get_cs_func(char c))(va_list args, char *b);
+char *(*get_cs_func(char c))(va_list, char *);
 
 int _putchar(char c);
-
+int _putnchar(char *buffer);
 char *_strcat(char *dest, char *src);
+char *print_int(va_list args, char *flagstr);
+char *flags_handler(char *flags, char *oristring, int is_negative);
+int _atoi(char *s);
 
 void rev_string(char *s);
 char *rot13(char *s);
