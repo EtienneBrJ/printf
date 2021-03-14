@@ -3,42 +3,67 @@
 /**
  * _print_int - Adds integers to our buffer
  * @args: pointer to the current va_arg
+ * @flagstr: This a string of our flags, which we will apply
  *
  * Return: Our temporary buffer
  */
 
 char *_print_int(va_list args, char *flagstr)
 {
-	int ite1, rem, len = 0, n;
+	int ite, rem = 0, len = 0, num, num_decoy, is_negative = 0;
 
-	char tmpbuffer[20], *tmpstring;
+	char *tmpstring, *resultstring;
 
 	if (args == NULL)
 		return(NULL);
 
-	flags_handler(flagstr);
 	num = va_arg(args, int);
-	if (num == 0)
+
+	if (num < 0)
 	{
+		num = -num;
+		is_negative = 1;
 	}
-	while (n != 0)
+
+	num_decoy = num;
+
+	while (num_decoy != 0)
 	{
 		len++;
-		n /= 10;
+		num_decoy /= 10;
 	}
-	for (i = 0; i < len; i++)
+	for (ite = 0; ite < len; ite++)
 	{
 		rem = num % 10;
 		num = num / 10;
-		str[len - (i + 1)] = rem + '0';
+		tmpstring[len - (i + 1)] = rem + '0';
 	}
-	str[len] = '\0';
+	tmpstring[len] = '\0';
+
+	resultstring = flags_handler(flagstr, tmpstring, is_negative);
+
+	return (resultstring);
 }
 
-char *flags_handler(char *flags, va_list args)
+/**
+ * flags_handler - This abomination checks our flags and applies them
+ * @flags: A string of the flags we need to apply
+ * @oristring: The original string of numbers which we're going to modify
+ * @is_negative: An int that indicates wether or not our int was negative
+ *
+ * Return: an integer
+ */
+char *flags_handler(char *flags, char *oristring, int is_negative)
 {
-	int ite1 = 0;
-	char *tmpstring, *returnstring;
+	int ite1 = 0, ite2 = 0, ite3 = 0, plus_sign = 0, ignore_space = 0,
+		space_sign = 0, zero_is_fieldwidth = 0, justify_left = 0,
+		first_zero_seen = 0, zero_followers, signage_done = 0,
+	        precison_done = 0, short_long_done = 0, zero = 0;
+
+	char *tmpstring, *returnstring, *field_width, *number_of_zeros,
+		*maximum_chars, *flag%;
+
+	char flag;
 
 	while (flags[ite1]!= '\0')
 	{
@@ -115,13 +140,18 @@ char *flags_handler(char *flags, va_list args)
 			flag = flagstr[ite1];
 		}
 		else if ((flag == 'l' || flag == 'h') && short_long_done != 1)
-		{
 			short_long_done = 1;
-		}
+
+		else if (flag == 'd' || flag == 'i')
+			break;
+
 		else
 		{
-			return (flags);
+			flags%[0] = '%';
+			_strcat(flags%, flags);
+			return (flags%);
 		}
+
 		ite1++;
 	}
 
@@ -145,15 +175,20 @@ char *flags_handler(char *flags, va_list args)
 		}
 	}
 
-	if (plus_sign = 1)
+	if (plus_sign = 1 && is_negative != 1)
 	{
 		tmpstring[ite1] = '+';
 		count++;
 	}
-	else if (space_sign = 1)
+	else if (space_sign = 1 && is_negative != 1)
 	{
 		tmpstring[ite1] = ' ';
 		count++
+	}
+	else if (is_negative == 1)
+	{
+		tmpstring[ite1] = '-';
+		count++;
 	}
 
 	if (number_of_zeros != NULL)
@@ -170,13 +205,13 @@ char *flags_handler(char *flags, va_list args)
 
 	}
 
-	_strcpy(tmpstring, args);
+	_strcat(tmpstring, args);
 	ite3 = 0;
 
 	if (field_width != NULL)
 		field_width_int = _atoi(field_width);
 
-	if (justify_left == 1 && field_width != NULL)
+	if (justify_left != 1 && field_width != NULL)
 	{
 		spaces = field_width_int - count;
 		while (spaces > 0)
@@ -187,9 +222,9 @@ char *flags_handler(char *flags, va_list args)
 		}
 	}
 
-	_strcpy(resultstring, tmpstring);
+	_strcat(resultstring, tmpstring);
 
-	if (field_width != NULL)
+	if (justify_left == 1 && field_width != NULL)
 	{
 		spaces = field_width_int - count;
 		while (spaces > 0)
@@ -206,7 +241,12 @@ char *flags_handler(char *flags, va_list args)
 	return (resultstring);
 }
 
-
+/**
+ * _atoi - convert a string to an integer
+ * @s: a pointer
+ *
+ * Return: an integer
+ */
 int _atoi(char *s)
 {
 	int ite1 = 0, ite2, num = 0, sign = 1;
@@ -229,20 +269,28 @@ int _atoi(char *s)
 }
 
 /**
- * _strcpy - copy a string to another string
- * @dest: a pointer
- * @src: another pointer
+ * *_strcat - This function appends the src string to the dest string.
+ * @dest: the destination string
+ * @src: the source string
  *
- * Return: Nothing
+ * Return: A pointer to the dest string
  */
-char *_strcpy(char *dest, char *src)
+char *_strcat(char *dest, char *src)
 {
-	int t;
+	char *pointer = dest;
 
-	for (t = 0; src[t] != '\0'; t++)
+	while (*dest != '\0')
+		dest++;
+	/* ^ iteration pour arriver au dernier charactère de la string dest */
+
+	while (*src != '\0')
 	{
-		dest[t] = src[t];
+		*dest = *src;
+	/* on est au début de la string src, et à la fin de la string dest */
+	/* ^l'index actuel de la string dest devient l'index actuel de la string src */
+		src++;
+		dest++;
 	}
-	dest[t] = '\0';
-	return (dest);
+	*dest = '\0';
+	return (pointer);
 }
