@@ -25,7 +25,7 @@ int _printf(const char *format, ...)
 		if (format[i] == '%')
 		{
 			i++;
-			while(get_cs_func(format[i]) == NULL)
+			while(get_cs_func(format[i]) == NULL && format[i])
 			{
 				_strcat(tmpBuffer, format[i]);
 				i++;
