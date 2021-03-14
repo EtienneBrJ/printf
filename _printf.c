@@ -1,7 +1,4 @@
 #include "holberton.h"
-#include <stdio.h>
-#include <stdlib.h>
-#include <stdarg.h>
 
 /**
  * _printf - Produces output according to a format.
@@ -12,12 +9,37 @@
 
 int _printf(const char *format, ...)
 {
-	print_t array[] = {
-		{"c", print_char},
-		{"s", print_string},
-		{NULL, NULL}
-	};
 	va_list args;
+	int (*pfunc)(va_list, char *);
+	int i;
+	char *tmpBuffer;
+	char *buffer;
 
 	va_start(args, format);
+
+	if (format == NULL || (format[0] == '%' && format[1] == '\0'))
+		return (-1);
+
+	for (i = 0; format[i] != '\0'; i++)
+	{
+		if (format[i] == '%')
+		{
+			i++;
+			while(get_cs_func(format[i]) == NULL && format[i])
+			{
+				_strcat(tmpBuffer, format[i]);
+				i++;
+			}
+			pfunc = get_cs_func(format[i]);
+			buffer = pfunc(args, tmpBuffer);
+		}
+		else if (!get_cs_fun(format[i]))
+			_strcat(buffer, format[i]);
+	}
+
+	va_end(args);
+
+	_putnchar(buffer); //print (strlen(buffer)) chars
+
+	return (0);
 }
