@@ -1,6 +1,5 @@
 #ifndef PRINT_H
 #define PRINT_H
-
 #include <stdarg.h>
 #include <unistd.h>
 
@@ -18,7 +17,6 @@ typedef struct print
 	char *m;
 	int (*func)(va_list args, char *b);
 } print_t;
-
 
 int _printf(const char *format, ...);
 
