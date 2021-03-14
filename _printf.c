@@ -9,40 +9,37 @@
 
 int _printf(const char *format, ...)
 {
-	print_t array[] = {
-		{"c", print_char},
-		{"s", print_string},
-		{"d", print_signed_int};
-		{"i", print_int};
-		{"b", convert_binary};
-		{"u", print_uns_int};
-		{"o", print_octal};
-		{"x", print_hexa};
-		{"X", print_upper_hexa};
-		{"S", print_string};
-		{"p", print_pointer};
-		{"r", print_rev_string};
-		{"R", pirnt_string_ROT13};
-		{"%", print_pourcentage};
-		{NULL, NULL}
-	};
 	va_list args;
-	int (*pfunc)(va_list);
+	int (*pfunc)(va_list, char *);
+	int i;
+	char *tmpBuffer;
+	char *buffer;
 
 	va_start(args, format);
 
-	if (format ==  NULL || (format[0] == '%' && format[1] == '\0'))
+	if (format == NULL || (format[0] == '%' && format[1] == '\0'))
 		return (-1);
 
-	while (format != '\0');
+	for (i = 0; format[i] != '\0'; i++)
 	{
-		if (*format == "%")
-			format++;
-		if (*format == "%")
-			add_to_buffer(*format);
-		if (mainflag_address(format) != NULL)
+		if (format[i] == '%')
 		{
-			pfunc = mainflag_address(format);
-			pfunc(va_list); //
+			i++;
+			while(get_cs_func(format[i]) == NULL)
+			{
+				_strcat(tmpBuffer, format[i]);
+				i++;
+			}
+			pfunc = get_cs_func(format[i]);
+			buffer = pfunc(args, tmpBuffer);
 		}
+		else if (!get_cs_fun(format[i]))
+			_strcat(buffer, format[i]);
+	}
+
+	va_end(args);
+
+	_putnchar(buffer); //print (strlen(buffer)) chars
+
+	return (0);
 }
