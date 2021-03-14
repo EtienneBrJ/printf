@@ -1,5 +1,4 @@
 #include "holberton.h"
-#include <stdio.h>
 /**
  * _printf - Produces output according to a format.
  * @format: Character string that tells us what to do
@@ -10,7 +9,7 @@
 int _printf(const char *format, ...)
 {
 	va_list args;
-	int (*pfunc)(va_list, char *);
+	char *(*pfunc)(va_list, char *);
 	int i;
 	char *tmpBuffer;
 	char *buffer;
@@ -50,7 +49,6 @@ int _printf(const char *format, ...)
 				p[1] = '\0';
 				_strcat(tmpBuffer, p);
 				buffer = pfunc(args, tmpBuffer);
-				printf("%s", buffer);
 			}
 		}
 		else
