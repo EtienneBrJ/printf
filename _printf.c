@@ -1,5 +1,5 @@
 #include "holberton.h"
-
+#include <stdio.h>
 /**
  * _printf - Produces output according to a format.
  * @format: Character string that tells us what to do
@@ -14,6 +14,7 @@ int _printf(const char *format, ...)
 	int i;
 	char *tmpBuffer;
 	char *buffer;
+	char *p;
 
 	va_start(args, format);
 
@@ -25,7 +26,9 @@ int _printf(const char *format, ...)
 		if (format[i] == '%' && format[i + 1] == '%')
 		{
 			i++;
-			_strcat(tmpBuffer, format[i]);
+			p[0] = format[i];
+       			p[1] = '\0';
+			_strcat(tmpBuffer, p);
 			i++;
 		}
 		if (format[i] == '%' && format[i + 1])
@@ -33,7 +36,9 @@ int _printf(const char *format, ...)
 			i++;
 			while(get_cs_func(format[i]) == NULL && format[i] != '\0')
 			{
-				_strcat(tmpBuffer, format[i]);
+				p[0] = format[i];
+				p[1] = '\0';
+				_strcat(tmpBuffer, p);
 				i++;
 			}
 			if (format[i] == '\0')
@@ -41,12 +46,19 @@ int _printf(const char *format, ...)
 			else if (get_cs_func(format[i]))
 			{
 				pfunc = get_cs_func(format[i]);
-				_strcat(tmpBuffer, format[i]);
+				p[0] = format[i];
+				p[1] = '\0';
+				_strcat(tmpBuffer, p);
 				buffer = pfunc(args, tmpBuffer);
+				printf("%s", buffer);
 			}
 		}
-		else if
-			_strcat(buffer, format[i]);
+		else
+		{
+			p[0] = format[i];
+			p[1] = '\0';
+			_strcat(buffer, p);
+		}
 	}
 
 	va_end(args);
