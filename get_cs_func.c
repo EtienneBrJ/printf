@@ -7,7 +7,7 @@
  * @args:
  **/
 
-char *(*get_cs_func(char c))(va_list, char *) // for conversion specifiers
+char *(*get_cs_func(char c))(va_list, char *)// for conversion specifiers
 {
 	print_t array[] = {
 //		{"c", print_char},
