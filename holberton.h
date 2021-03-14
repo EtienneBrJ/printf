@@ -25,4 +25,7 @@ int (*get_cs_func(char c))(va_list args, char *b);
 int _putchar(char c);
 
 char *_strcat(char *dest, char *src);
+
+void rev_string(char *s);
+char *rot13(char *s);
 #endif
