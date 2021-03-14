@@ -27,7 +27,7 @@ int _printf(const char *format, ...)
 		{
 			i++;
 			p[0] = format[i];
-			p[1] = '\0';
+       			p[1] = '\0';
 			_strcat(tmpBuffer, p);
 			i++;
 		}
@@ -37,6 +37,7 @@ int _printf(const char *format, ...)
 			while(get_cs_func(format[i]) == NULL && format[i] != '\0')
 			{
 				p[0] = format[i];
+				p[1] = '\0';
 				_strcat(tmpBuffer, p);
 				i++;
 			}
@@ -46,6 +47,7 @@ int _printf(const char *format, ...)
 			{
 				pfunc = get_cs_func(format[i]);
 				p[0] = format[i];
+				p[1] = '\0';
 				_strcat(tmpBuffer, p);
 				buffer = pfunc(args, tmpBuffer);
 				printf("%s", buffer);
@@ -54,6 +56,7 @@ int _printf(const char *format, ...)
 		else
 		{
 			p[0] = format[i];
+			p[1] = '\0';
 			_strcat(buffer, p);
 		}
 	}

@@ -3,3 +3,4 @@ rm_tilde
 main.c
 a.out
 test
+copy_printf.c
