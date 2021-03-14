@@ -11,9 +11,9 @@ int _printf(const char *format, ...)
 	va_list args;
 	char *(*pfunc)(va_list, char *);
 	int i;
-	char *tmpBuffer;
+	char tmpBuffer[20];
 	char *buffer;
-	char p[20];
+	char p[10];
 
 	va_start(args, format);
 
