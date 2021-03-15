@@ -24,7 +24,7 @@ char *(*get_cs_func(char c))(va_list, char *);
 
 int _putchar(char c);
 
-int _putnchar(char *buffer);
+int _putnchar(char buffer[]);
 
 char *_strcat(char *dest, char *src);
 
@@ -37,5 +37,7 @@ int _atoi(char *s);
 void rev_string(char *s);
 
 char *rot13(char *s);
+
+int _catbuf(char dest[], char *src);
 
 #endif
