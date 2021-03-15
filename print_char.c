@@ -61,7 +61,3 @@ char *print_string(va_list args, char *flagstr)
 
 	return (NULL);
 }
-
-/*char *convert_char_to_str(va_list args, char *flagster)
-{
-	*/
