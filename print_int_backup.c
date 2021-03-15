@@ -14,12 +14,15 @@ char *print_int(va_list args, char *flagstr)
 	int ite, rem = 0, len = 0, num, num_decoy, is_negative = 0;
 
 	char tmpstring[50], *resultstring;
-	printf("test11");
 
 	if (args == NULL)
 		return(NULL);
 
+	printf("%s\n", flagstr);
+
 	num = va_arg(args, int);
+
+	printf("%d\n", num);
 
 	if (num < 0)
 	{
@@ -39,9 +42,11 @@ char *print_int(va_list args, char *flagstr)
 		rem = num % 10;
 		num = num / 10;
 		tmpstring[len - (ite + 1)] = rem + '0';
+		printf("%s\n", tmpstring);
 	}
 	tmpstring[len] = '\0';
-	printf("test10");
+
+	printf("%s\n", tmpstring);
 
 	resultstring = flags_handler(flagstr, tmpstring, is_negative);
 
@@ -72,7 +77,12 @@ char *flags_handler(char *flags, char *oristring, int is_negative)
 	char flag;
 
 	tmpstring[0] = '\0';
-	/*
+
+	printf("%s\n", flags);
+	printf("%s\n", oristring);
+	printf("%d\n", is_negative);
+	printf("%s\n", tmpstring);
+	printf("%sresult_string0\n", resultstring);
 	while (flags[ite1]!= '\0')
 	{
 		flag = flags[ite1];
@@ -154,6 +164,7 @@ char *flags_handler(char *flags, char *oristring, int is_negative)
 		else if (flag == 'd' || flag == 'i')
 		{
 			short_long_done = 1;
+			printf("%c_inside_my_if\n", flag);
 		}
 		else
 		{
@@ -164,7 +175,9 @@ char *flags_handler(char *flags, char *oristring, int is_negative)
 		}
 
 		ite1++;
-	} */
+	}
+
+	printf("%c_exited_my_if\n", flag);
 
 	while (oristring[count] != '\0')
 	{
@@ -186,7 +199,7 @@ char *flags_handler(char *flags, char *oristring, int is_negative)
 		}
 	} */
 
-	/*
+	printf("test8");
 	if (plus_sign = 1 && is_negative != 1)
 	{
 		tmpstring[ite1] = '+';
@@ -215,16 +228,18 @@ char *flags_handler(char *flags, char *oristring, int is_negative)
 			count++;
 		}
 
-	} */
+	}
 
 	_strcat(tmpstring, oristring);
 	ite3 = 0;
-	printf("test9");
+
+	printf("%sori_conca\n", tmpstring);
+	printf("test5\n");
 
 /*	if (field_width != '\0')
 		field_width_int = _atoi(field_width);
-
-
+	*/
+	printf("test6\n");
 	if (justify_left != 1 && field_width != NULL)
 	{
 		spaces = field_width_int - count;
@@ -236,11 +251,16 @@ char *flags_handler(char *flags, char *oristring, int is_negative)
 		}
 	}
 
+	printf("test4\n");
 	if (tmpstring != '\0')
 	{
+	printf("test7");
 	_strcat(resultstring, tmpstring);
 	printf("%s\n", tmpstring);
 	}
+
+	printf("%stmp_string\n", tmpstring);
+	printf("%sresult_string0\n", resultstring);
 
 	if (justify_left == 1 && field_width != NULL)
 	{
@@ -252,9 +272,11 @@ char *flags_handler(char *flags, char *oristring, int is_negative)
 			ite3++;
 			count++;
 		}
-		} */
+	}
 
 	resultstring[count] = '\0';
+
+	printf("%sresult_string\n", resultstring);
 
 	return (resultstring);
 }

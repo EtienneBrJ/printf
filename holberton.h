@@ -20,7 +20,7 @@ typedef struct print
 
 int _printf(const char *format, ...);
 
-int (*get_cs_func(char c))(va_list, char *);
+char *(*get_cs_func(char c))(va_list, char *);
 
 int _putchar(char c);
 
