@@ -43,7 +43,7 @@ char *print_int(va_list args, char *flagstr)
 
 	resultstring = flags_handler(flagstr, tmpstring, is_negative);
 
-	return (tmpstring);
+	return (resultstring);
 }
 /**
  * lags_handler - This abomination checks our flags and applies them
