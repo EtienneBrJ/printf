@@ -17,7 +17,6 @@ int _printf(const char *format, ...)
 	char *finalBuffer;
 	char p[2];
 
-
 	va_start(args, format);
 
 	finalBuffer = malloc(sizeof(char) * 1024);

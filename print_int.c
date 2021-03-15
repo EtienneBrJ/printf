@@ -1,7 +1,6 @@
 #include "holberton.h"
 #include <stdlib.h>
 
-
 /**
  * _print_int - Adds integers to our buffer
  * @args: pointer to the current va_arg
@@ -42,13 +41,12 @@ char *print_int(va_list args, char *flagstr)
 	}
 	tmpstring[len] = '\0';
 
-	_putnchar(tmpstring);
+	resultstring = flags_handler(flagstr, tmpstring, is_negative);
 
-	return (0);
+	return (tmpstring);
 }
-
 /**
- * flags_handler - This abomination checks our flags and applies them
+ * lags_handler - This abomination checks our flags and applies them
  * @flags: A string of the flags we need to apply
  * @oristring: The original string of numbers which we're going to modify
  * @is_negative: An int that indicates wether or not our int was negative
