@@ -9,8 +9,8 @@
 char *(*get_cs_func(char c))(va_list, char *)
 {
 	print_t array[] = {
-/*		{"c", print_char},
-		{"s", print_string}, */
+		{"c", print_char},
+		{"s", print_string},
 		{"d", print_int},
 		{"i", print_int}
 /*		{"b", convert_binary},
@@ -25,7 +25,7 @@ char *(*get_cs_func(char c))(va_list, char *)
 	};
 
 	int i;
-	int size = 2;
+	int size = 4;
 
 	for (i = 0; i < size; i++)
 		if (*array[i].m == c)
