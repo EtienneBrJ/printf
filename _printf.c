@@ -10,7 +10,7 @@
 int _printf(const char *format, ...)
 {
 	va_list args;
-	int (*pfunc)(va_list, char *);
+	char *(*pfunc)(va_list, char *);
 	int i;
 	char *tmpBuffer;
 	char *buffer;
