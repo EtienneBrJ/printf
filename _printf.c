@@ -62,8 +62,13 @@ int _printf(const char *format, ...)
 				p[0] = format[i];
 				p[1] = '\0';
 				_strcat(tmpBuffer, p);
-
 				buffer = malloc(sizeof(char) * 50);
+				/*if (buffer == NULL)
+				{
+					printf("Error\n");
+					return (NULL);
+				}
+				*/
 				buffer = pfunc(args, tmpBuffer);
 				free(tmpBuffer);
 
