@@ -9,10 +9,11 @@
 char *print_char(va_list args, char *flagstr)
 {
 	char c = va_arg(args, int);
+	char *s = '\0';
+	flagstr = flagstr;
 
 	if (c)
 	{
-		char *s;
 		s[0] = c;
 		s[1] = '\0';
 
@@ -32,6 +33,7 @@ char *print_char(va_list args, char *flagstr)
 char *print_string(va_list args, char *flagstr)
 {
 	char *s = va_arg(args, char *);
+	flagstr = flagstr;
 
 	if (s)
 	{
