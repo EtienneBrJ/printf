@@ -1,5 +1,4 @@
 #include "holberton.h"
-
 #include <stdlib.h>
 
 /**
@@ -46,9 +45,8 @@ char *print_int(va_list args, char *flagstr)
 
 	return (resultstring);
 }
-
 /**
- * flags_handler - This abomination checks our flags and applies them
+ * lags_handler - This abomination checks our flags and applies them
  * @flags: A string of the flags we need to apply
  * @oristring: The original string of numbers which we're going to modify
  * @is_negative: An int that indicates wether or not our int was negative
@@ -306,8 +304,8 @@ char *_strcat(char *dest, char *src)
 	while (*src != '\0')
 	{
 		*dest = *src;
-	/* on est au début de la string src, et à la fin de la string dest */
-	/* ^l'index actuel de la string dest devient l'index actuel de la string src */
+		/* on est au début de la string src, et à la fin de la string dest */
+		/* ^l'index actuel de la string dest devient l'index actuel de la string src */
 		src++;
 		dest++;
 	}
