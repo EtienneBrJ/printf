@@ -1,12 +1,11 @@
 #include "holberton.h"
-#include <stdio.h>
+
 /**
  * main_flag_address - returns a pointer to a function associated with the char
  * passed in arguments
  *
  * @args:
  **/
-
 char *(*get_cs_func(char c))(va_list, char *)
 {
 	print_t array[] = {
