@@ -1,0 +1,74 @@
+.TH _printf "16 May 2021" "4 days Duo Project"
+.SH NAME
+.B _printf
+.SH SYNOPSIS
+.B #include \(dqholberton.h\(dq
+.sp
+.B int _printf(const char
+*
+.I format
+.B , ...);
+.sp
+.RB _printf
+.I FORMAT
+.BI [ARGUMENTS]
+.SH DESCRIPTION
+.BR _printf
+is a variadic function thats prints
+a string according to a format.
+This function can take many arguments.
+.sp
+.RB On
+.RB success,
+.RI _printf
+prints a string.
+.sp
+.RI Return " -1"
+if the string
+.BR FORMAT
+.RB is
+empty or if
+.BR any
+errors
+.RB occurs.
+.SH OPTIONS
+Format can contain conversion specifier. These starts with '%' and are followed by :
+.sp
+-
+.B d
+:
+.B convert a decimal number
+.sp
+-
+.B i
+:
+.B convert a decimal number
+.sp
+-
+.B c
+:
+.B print a char
+.sp
+-
+.B s
+:
+.B print a string
+.sp
+-
+.B r
+:
+.B print a string in reverse
+.sp
+-
+.B R
+:
+.B convert a string in ROT13 encryption
+.SH NOTES
+_printf use a character printing function called _putchar, that use the system
+write(2).
+.SH BUGS
+Many bugs for the moment. Function not working as we want.
+.SH AUTHOR
+Octave Collombel and Etienne Brun for HolbertonSchool project.
+.SH SEE ALSO
+<stdarg.h>, write(2).
