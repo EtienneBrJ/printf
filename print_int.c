@@ -55,13 +55,12 @@ char *print_int(va_list args, char *flagstr)
  */
 char *flags_handler(char *flags, char *oristring, int is_negative)
 {
-	int ite1 = 0, ite2 = 0, ite3 = 0, plus_sign = 0, ignore_space = 0,
+	int ite1 = 0, ite2 = 0, ite3 = 0, plus_sign = 0,
 		space_sign = 0, zero_is_fieldwidth = 0, justify_left = 0,
 		first_zero_seen = 0, zero_followers, signage_done = 0,
 	        precison_done = 0, short_long_done = 0, zeros = 0, count = 0,
-		maximum_chars_int = 0, number_of_zero_int = 0,
-		field_width_int = 0, zeros_int = 0, spaces = 0,
-		number_of_zeros_int = 0;
+		maximum_chars_int = 0, number_of_zeros_int = 0,
+		field_width_int = 0, zeros_int = 0, spaces = 0;
 
 	char tmpstring[20], field_width[10], number_of_zeros[10],
 		maximum_chars[10], *resultstring;
@@ -77,7 +76,6 @@ char *flags_handler(char *flags, char *oristring, int is_negative)
 		if (flag == '+' && signage_done != 1)
 		{
 			plus_sign = 1;
-			ignore_space = 1;
 		}
 		else if (flag == ' ' && signage_done != 1)
 		{
@@ -90,7 +88,7 @@ char *flags_handler(char *flags, char *oristring, int is_negative)
 		}
 		else if (flag == '0' && first_zero_seen != 1)
 		{
-			if (zero_is_fieldwidth = 1)
+			if (zero_is_fieldwidth == 1)
 			{
 				ite2 = 0;
 				while (flags[ite1 + 1] >= '0' && flags[ite1 + 1] <= '9')
