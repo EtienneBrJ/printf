@@ -3,7 +3,6 @@
 
 #include <stdarg.h>
 #include <unistd.h>
-#include <stdlib.h>
 /**
  * struct print - struct containing flag and a pointer
  * to the corresponding function
