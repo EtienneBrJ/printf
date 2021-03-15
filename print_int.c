@@ -1,9 +1,5 @@
 #include "holberton.h"
-<<<<<<< HEAD
-=======
-
 #include <stdlib.h>
->>>>>>> 11b72a11bf3f6b20bb39246ab63261f9a5823762
 
 /**
  * _print_int - Adds integers to our buffer
@@ -49,11 +45,8 @@ char *print_int(va_list args, char *flagstr)
 
 	return (0);
 }
-<<<<<<< HEAD
-=======
-
 /**
- * flags_handler - This abomination checks our flags and applies them
+ * lags_handler - This abomination checks our flags and applies them
  * @flags: A string of the flags we need to apply
  * @oristring: The original string of numbers which we're going to modify
  * @is_negative: An int that indicates wether or not our int was negative
@@ -293,7 +286,6 @@ int _atoi(char *s)
 	return (num);
 }
 
->>>>>>> 11b72a11bf3f6b20bb39246ab63261f9a5823762
 /**
  * *_strcat - This function appends the src string to the dest string.
  * @dest: the destination string

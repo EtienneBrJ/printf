@@ -12,16 +12,10 @@ int _printf(const char *format, ...)
 	va_list args;
 	int (*pfunc)(va_list, char *);
 	int i;
-<<<<<<< HEAD
-	register int buffer;
-	char *tmpBuffer;
-	char *p;
-=======
 	char *tmpBuffer;
 	char *buffer;
 	char *finalBuffer;
 	char p[2];
->>>>>>> 11b72a11bf3f6b20bb39246ab63261f9a5823762
 
 	va_start(args, format);
 
@@ -52,16 +46,6 @@ int _printf(const char *format, ...)
 				i++;
 			}
 			if (format[i] == '\0')
-<<<<<<< HEAD
-				_strcat(buffer, tmpBuffer);
-			else if (get_cs_func(format[i]) != NULL)
-			{
-				*p = format[i];
-				printf("%c", format[i]);
-				pfunc = get_cs_func(format[i]);
-				_strcat(tmpBuffer, p);
-			        pfunc(args, tmpBuffer);
-=======
 			{
 				_strcat(finalBuffer, tmpBuffer);
 				free(tmpBuffer);
@@ -79,7 +63,6 @@ int _printf(const char *format, ...)
 				free(tmpBuffer);
 				_strcat(finalBuffer, buffer);
 				free(buffer);
->>>>>>> 11b72a11bf3f6b20bb39246ab63261f9a5823762
 			}
 		}
 		else
@@ -92,10 +75,8 @@ int _printf(const char *format, ...)
 
 	va_end(args);
 
-<<<<<<< HEAD
-=======
 	_putnchar(finalBuffer); //print (strlen(buffer)) chars
 /*	free(finalBuffer); */
->>>>>>> 11b72a11bf3f6b20bb39246ab63261f9a5823762
+
 	return (0);
 }
