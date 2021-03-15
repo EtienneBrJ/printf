@@ -41,9 +41,9 @@ char *print_int(va_list args, char *flagstr)
 	}
 	tmpstring[len] = '\0';
 
-	_putnchar(tmpstring);
+	resultstring = flags_handler(flagstr, tmpstring, is_negative);
 
-	return (0);
+	return (tmpstring);
 }
 /**
  * lags_handler - This abomination checks our flags and applies them
