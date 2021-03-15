@@ -6,11 +6,20 @@
  *
  * Return: Our temporary buffer
  */
-char *print_char(va_list args, char *flagstr)
+char *print_char(va_list args)
 {
 	char c = va_arg(args, int);
-	
-	return (c);
+
+	if (c)
+	{
+		char *s;
+		s[0] = c;
+		s[1] = '\0';
+
+		return (s);
+	}
+
+	return (NULL);
 
 }
 /**
@@ -20,12 +29,14 @@ char *print_char(va_list args, char *flagstr)
  *
  * Return: Our temporary buffer
  */
-char *print_string(va_list args, char *flagstr)
+char *print_string(va_list args)
 {
 	char *s = va_arg(args, char *);
 
-	if (s == NULL)
-		s = "(NULL)";
+	if (s)
+	{
+		return (s);
+	}
 
-	return (s);
+	return (NULL);
 }
