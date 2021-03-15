@@ -1,12 +1,11 @@
 #include "holberton.h"
-#include <stdio.h>
+
 /**
  * main_flag_address - returns a pointer to a function associated with the char
  * passed in arguments
  *
  * @args:
  **/
-
 char *(*get_cs_func(char c))(va_list, char *)
 {
 	print_t array[] = {
@@ -28,11 +27,9 @@ char *(*get_cs_func(char c))(va_list, char *)
 	int i;
 	int size = 2;
 
-	printf("test13");
 	for (i = 0; i < size; i++)
 		if (*array[i].m == c)
 		{
-			printf("test12");
 			return (array[i].func);
 		}
 	return (NULL);

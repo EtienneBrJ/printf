@@ -1,5 +1,6 @@
 #include "holberton.h"
-#include <stdio.h>
+
+#include <stdlib.h>
 
 /**
  * _print_int - Adds integers to our buffer
@@ -14,7 +15,6 @@ char *print_int(va_list args, char *flagstr)
 	int ite, rem = 0, len = 0, num, num_decoy, is_negative = 0;
 
 	char tmpstring[50], *resultstring;
-	printf("test11");
 
 	if (args == NULL)
 		return(NULL);
@@ -41,7 +41,6 @@ char *print_int(va_list args, char *flagstr)
 		tmpstring[len - (ite + 1)] = rem + '0';
 	}
 	tmpstring[len] = '\0';
-	printf("test10");
 
 	resultstring = flags_handler(flagstr, tmpstring, is_negative);
 
@@ -66,18 +65,16 @@ char *flags_handler(char *flags, char *oristring, int is_negative)
 		field_width_int = 0, zeros_int = 0, spaces = 0,
 		number_of_zeros_int = 0;
 
-	char tmpstring[20], returnstring[30], *field_width, *number_of_zeros,
-		*maximum_chars, *flags_percent, *flagstr, *resultstring;
+	char tmpstring[20], field_width[10], number_of_zeros[10],
+		maximum_chars[10], *resultstring;
 
 	char flag;
 
 	tmpstring[0] = '\0';
-	/*
+
 	while (flags[ite1]!= '\0')
 	{
 		flag = flags[ite1];
-
-		printf("%c\n", flag);
 
 		if (flag == '+' && signage_done != 1)
 		{
@@ -98,14 +95,14 @@ char *flags_handler(char *flags, char *oristring, int is_negative)
 			if (zero_is_fieldwidth = 1)
 			{
 				ite2 = 0;
-				while (flagstr[ite1 + 1] >= '0' && flagstr[ite1 + 1] <= '9')
+				while (flags[ite1 + 1] >= '0' && flags[ite1 + 1] <= '9')
 				{
-					field_width[ite2] = flagstr[ite1];
+					field_width[ite2] = flags[ite1];
 					ite1++;
 					ite2++;
 				}
 				field_width[ite2] = '\0';
-				flag = flagstr[ite1];
+				flag = flags[ite1];
 			}
 			zero_followers = 1;
 			signage_done = 1;
@@ -116,9 +113,9 @@ char *flags_handler(char *flags, char *oristring, int is_negative)
 			if (zero_followers == 1)
 			{
 				ite2 = 0;
-				while (flagstr[ite1 + 1] >= '0' && flagstr[ite1 + 1] <= '9')
+				while (flags[ite1 + 1] >= '0' && flags[ite1 + 1] <= '9')
 				{
-					number_of_zeros[ite2] = flagstr[ite1];
+					number_of_zeros[ite2] = flags[ite1];
 					ite1++;
 					ite2++;
 				}
@@ -126,28 +123,32 @@ char *flags_handler(char *flags, char *oristring, int is_negative)
 				zero_followers = 0;
 			}
 			ite2 = 0;
-			while (flagstr[ite1 + 1] >= '0' && flagstr[ite1 + 1] <= '9')
+
+			field_width[ite2] = flags[ite1];
+			ite1++;
+			ite2++;
+			while (flags[ite1 + 1] >= '0' && flags[ite1 + 1] <= '9')
 			{
-				field_width[ite2] = flagstr[ite1];
+				field_width[ite2] = flags[ite1];
 				ite1++;
 				ite2++;
 			}
 			field_width[ite2] = '\0';
 			signage_done = 1;
-			flag = flagstr[ite1];
+			flag = flags[ite1];
 		}
-		else if (flag == '.' && (flagstr[ite1 + 1] >= '0' && flagstr[ite1 + 1] <= '9') && precison_done != 1)
+		else if (flag == '.' && (flags[ite1 + 1] >= '0' && flags[ite1 + 1] <= '9') && precison_done != 1)
 		{
-			while (flagstr[ite1 + 1] >= '0' && flagstr[ite1 + 1] <= '9')
+			while (flags[ite1 + 1] >= '0' && flags[ite1 + 1] <= '9')
 			{
-				maximum_chars[ite2] = flagstr[ite1];
+				maximum_chars[ite2] = flags[ite1];
 				ite1++;
 				ite2++;
 			}
 			maximum_chars[ite2] = '\0';
 			precison_done = 1;
 			signage_done = 1;
-			flag = flagstr[ite1];
+			flag = flags[ite1];
 		}
 		else if ((flag == 'l' || flag == 'h') && short_long_done != 1)
 			short_long_done = 1;
@@ -157,21 +158,27 @@ char *flags_handler(char *flags, char *oristring, int is_negative)
 		}
 		else
 		{
-			flags_percent[0] = '%';
-			flags_percent[1] = '\0';
-			_strcat(flags_percent, flags);
-			return (flags_percent);
+
+			while (oristring[count] != '\0')
+				count++;
+
+			resultstring = malloc(sizeof(char) * (count + 2));
+			resultstring[0] = '%';
+			resultstring[1] = '\0';
+
+			_strcat(resultstring, flags);
+			return (resultstring);
 		}
 
 		ite1++;
-	} */
+	}
 
 	while (oristring[count] != '\0')
 	{
 		count++;
 	}
 
-	/*
+
 	if (maximum_chars != NULL)
 	{
 		maximum_chars_int = _atoi(maximum_chars);
@@ -184,22 +191,21 @@ char *flags_handler(char *flags, char *oristring, int is_negative)
 			ite3++;
 			count++;
 		}
-	} */
+	}
 
-	/*
-	if (plus_sign = 1 && is_negative != 1)
+	if (plus_sign == 1 && is_negative != 1)
 	{
-		tmpstring[ite1] = '+';
+		tmpstring[ite3] = '+';
 		count++;
 	}
-	else if (space_sign = 1 && is_negative != 1)
+	else if (space_sign == 1 && is_negative != 1)
 	{
-		tmpstring[ite1] = ' ';
+		tmpstring[ite3] = ' ';
 		count++;
 	}
 	else if (is_negative == 1)
 	{
-		tmpstring[ite1] = '-';
+		tmpstring[ite3] = '-';
 		count++;
 	}
 
@@ -215,44 +221,40 @@ char *flags_handler(char *flags, char *oristring, int is_negative)
 			count++;
 		}
 
-	} */
+	}
 
 	_strcat(tmpstring, oristring);
-	ite3 = 0;
-	printf("test9");
 
-/*	if (field_width != '\0')
+	if (field_width != NULL)
 		field_width_int = _atoi(field_width);
 
 
-	if (justify_left != 1 && field_width != NULL)
-	{
+	if (field_width_int != 0)
 		spaces = field_width_int - count;
-		while (spaces > 0)
-		{
-			resultstring[count] = ' ';
-			spaces -= 1;
-			count++;
-		}
-	}
 
-	if (tmpstring != '\0')
-	{
-	_strcat(resultstring, tmpstring);
-	printf("%s\n", tmpstring);
-	}
+	resultstring = malloc(sizeof(char) * (spaces + count + 1));
 
-	if (justify_left == 1 && field_width != NULL)
+	if (justify_left != 1)
 	{
-		spaces = field_width_int - count;
+		ite3 = 0;
 		while (spaces > 0)
 		{
 			resultstring[ite3] = ' ';
 			spaces -= 1;
-			ite3++;
 			count++;
+			ite3++;
 		}
-		} */
+	}
+
+	_strcat(resultstring, tmpstring);
+
+	while (spaces > 0)
+	{
+		resultstring[count] = ' ';
+		spaces -= 1;
+		ite3++;
+		count++;
+	}
 
 	resultstring[count] = '\0';
 
