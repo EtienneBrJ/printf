@@ -11,7 +11,7 @@ int _printf(const char *format, ...)
 {
 	va_list args;
 	char *(*pfunc)(va_list, char *);
-	int i;
+	int i, count = 0;
 	char *tmpBuffer;
 	char *buffer;
 	char finalBuffer[1024];
@@ -87,7 +87,7 @@ int _printf(const char *format, ...)
 /*	printf("test_%s_p\n", p); */
 /*	printf("test_%s_p\n", p); */
 /*	printf("test_%s_finalBuffer\n", finalBuffer); */
-	_putnchar(finalBuffer); /*print (strlen(buffer)) chars*/
+	count = _putnchar(finalBuffer); /*print (strlen(buffer)) chars*/
 /*	free(finalBuffer); */
-	return (0);
+	return (count);
 }
