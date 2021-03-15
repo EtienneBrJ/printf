@@ -14,16 +14,18 @@ int _printf(const char *format, ...)
 	int i;
 	char *tmpBuffer;
 	char *buffer;
-	char *finalBuffer;
-	char p[2];
-
-	va_start(args, format);
-
-	finalBuffer = malloc(sizeof(char) * 1024);
+	char finalBuffer[1024];
+	char *p;
 
 	if (format == NULL || (format[0] == '%' && format[1] == '\0'))
 		return (-1);
 
+	va_start(args, format);
+
+	p = malloc(sizeof(char) * 2);
+	finalBuffer[0] = '\0';
+/*	finalBuffer = malloc(sizeof(char) * 1024); */
+/*	printf("test_%s_final_buffer", finalBuffer); */
 	for (i = 0; format[i] != '\0'; i++)
 	{
 		tmpBuffer = malloc(sizeof(char) * 20);
@@ -60,8 +62,10 @@ int _printf(const char *format, ...)
 
 				buffer = malloc(sizeof(char) * 50);
 				buffer = pfunc(args, tmpBuffer);
+				/*	printf("%s_tmpbuffer\n", tmpBuffer); */
 				free(tmpBuffer);
-				_strcat(finalBuffer, buffer);
+
+				_catbuf(finalBuffer, buffer);
 				free(buffer);
 			}
 		}
@@ -75,7 +79,10 @@ int _printf(const char *format, ...)
 
 	va_end(args);
 
+/*	printf("test_%s_p\n", p); */
+/*	printf("test_%s_finalBuffer\n", finalBuffer); */
 	_putnchar(finalBuffer); //print (strlen(buffer)) chars
 /*	free(finalBuffer); */
+	free(p);
 	return (0);
 }
