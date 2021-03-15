@@ -6,7 +6,7 @@
  *
  * Return: Our temporary buffer
  */
-char *print_char(va_list args)
+char *print_char(va_list args, char *flagstr)
 {
 	char c = va_arg(args, int);
 
@@ -29,7 +29,7 @@ char *print_char(va_list args)
  *
  * Return: Our temporary buffer
  */
-char *print_string(va_list args)
+char *print_string(va_list args, char *flagstr)
 {
 	char *s = va_arg(args, char *);
 
@@ -40,3 +40,7 @@ char *print_string(va_list args)
 
 	return (NULL);
 }
+
+/*char *convert_char_to_str(va_list args, char *flagster)
+{
+	*/
