@@ -39,7 +39,7 @@ char *print_char(va_list args, char *flagstr);
 
 int _atoi(char *s);
 char *rot13(char *s);
-void rev_string(char *s);
+char * rev_string(va_list args,__attribute__((unused))char *flagstr);
 
 /* cat functions */
 

@@ -1,4 +1,5 @@
 #include "holberton.h"
+#include <stdlib.h>
 /**
  * _print_char - Add char to our buffer
  * @args: pointer to the current va_arg

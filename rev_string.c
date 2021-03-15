@@ -3,13 +3,13 @@
  * rev_string - function that reverses a string
  * @s: string to reverse in the function
  */
-void rev_string(va_list args,__attribute__((unused))char *flagstr)
+char * rev_string(va_list args,__attribute__((unused))char *flagstr)
 {
 	int i = 0;
 	int max, min, temp;
 	char *s;
 
-	s = va_arg(args, char *)
+	s = va_arg(args, char *);
 
 	min = 0;
 	while (s[i] != '\0')
@@ -24,4 +24,5 @@ void rev_string(va_list args,__attribute__((unused))char *flagstr)
 		s[max] = s[min];
 		s[min] = temp;
 	}
+	return (s);
 }
