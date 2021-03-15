@@ -10,12 +10,13 @@
 int _printf(const char *format, ...)
 {
 	va_list args;
-	char *(*pfunc)(va_list, char *);
+	int (*pfunc)(va_list, char *);
 	int i;
 	char *tmpBuffer;
 	char *buffer;
 	char *finalBuffer;
 	char p[2];
+
 
 	va_start(args, format);
 
@@ -77,5 +78,6 @@ int _printf(const char *format, ...)
 
 	_putnchar(finalBuffer); //print (strlen(buffer)) chars
 /*	free(finalBuffer); */
+
 	return (0);
 }

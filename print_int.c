@@ -1,6 +1,6 @@
 #include "holberton.h"
-
 #include <stdlib.h>
+
 
 /**
  * _print_int - Adds integers to our buffer
@@ -42,9 +42,9 @@ char *print_int(va_list args, char *flagstr)
 	}
 	tmpstring[len] = '\0';
 
-	resultstring = flags_handler(flagstr, tmpstring, is_negative);
+	_putnchar(tmpstring);
 
-	return (resultstring);
+	return (0);
 }
 
 /**
@@ -306,8 +306,8 @@ char *_strcat(char *dest, char *src)
 	while (*src != '\0')
 	{
 		*dest = *src;
-	/* on est au début de la string src, et à la fin de la string dest */
-	/* ^l'index actuel de la string dest devient l'index actuel de la string src */
+		/* on est au début de la string src, et à la fin de la string dest */
+		/* ^l'index actuel de la string dest devient l'index actuel de la string src */
 		src++;
 		dest++;
 	}
