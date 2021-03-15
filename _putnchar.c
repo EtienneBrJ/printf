@@ -3,7 +3,7 @@
  * print - print n char
  * @buffer : string to print
  */
-int _putnchar(char *buffer)
+int _putnchar(char buffer[])
 
 {
 
@@ -21,5 +21,7 @@ int _putnchar(char *buffer)
 	}
 
 	write (1, buffer, count);
+
+	return (count);
 
 }
