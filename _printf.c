@@ -46,7 +46,7 @@ int _printf(const char *format, ...)
 		}
 	}
 	va_end(args);
-	count = _putnchar(finalBuffer);
+	count = _putnchar(finalBuffer); /*print (strlen(buffer)) chars*/
 	return (count);
 }
 
@@ -88,9 +88,9 @@ char *format_handler(char p[], const char *format, va_list args, int i)
 		p[0] = format[i];
 		p[1] = '\0';
 		_strcat(tmpBuffer, p);
-/*		buffer = malloc(sizeof(char) * 50);
-		if (buffer == NULL)
-		return (-1); */
+		/*buffer = malloc(sizeof(char) * 50);
+		  if (buffer == NULL)
+		  return (-1); */
 
 		buffer = pfunc(args, tmpBuffer);
 		free(tmpBuffer);

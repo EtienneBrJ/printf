@@ -14,22 +14,18 @@ char *rev_string(va_list args,__attribute__((unused))char *flagstr)
 	char *str;
 	if (!s)
 		return (NULL);
-
 	min = 0;
 	while (s[i] != '\0')
 	{
 		i++;
 	}
-	str = malloc(sizeof(char) * (i + 1));
-	*str = 0;
+	str = _calloc(i + 1, sizeof(char));
 	max = i - 1;
-
-	for (min = 0; min < max; min++, max--)
+	for (min = 0; min <= i / 2; min++, max--)
 	{
 		temp = s[max];
 		str[max] = s[min];
 		str[min] = temp;
 	}
-
 	return (str);
 }
