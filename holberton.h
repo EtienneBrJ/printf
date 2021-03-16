@@ -28,6 +28,7 @@ char *flags_handler(char *flags, char *oristring, int is_negative);
 
 int _putchar(char c);
 int _putnchar(char buffer[]);
+char *format_handler(char p[], const char *format, va_list args, int i);
 
 /* return char * for buffer functions */
 
