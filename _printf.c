@@ -60,13 +60,12 @@ char *format_handler(char p[], const char *format, va_list args, int i)
 {
 	char *tmpBuffer, *buffer;
 	char *(*pfunc)(va_list, char *);
-	int sizechar = sizeof(char);
 
-	tmpBuffer = _calloc(sizechar, 20);
+	tmpBuffer = _calloc(20, sizeof(char));
 	if (tmpBuffer == NULL)
 		return (NULL);
 
-	buffer = _calloc(sizechar, 50);
+	buffer = _calloc(50, sizeof(char));
 	if (buffer == NULL)
 		return (NULL);
 

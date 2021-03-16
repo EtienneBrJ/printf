@@ -24,7 +24,7 @@ char *(*get_cs_func(char c))(va_list, char *);
 
 char *flags_handler(char *flags, char *oristring, int is_negative);
 
-void *_calloc(int nmemb, int size);
+char *_calloc(unsigned int nmemb, unsigned int size);
 
 /* prints functions */
 
