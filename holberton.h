@@ -30,13 +30,18 @@ char *_calloc(unsigned int nmemb, unsigned int size);
 
 int _putchar(char c);
 int _putnchar(char buffer[]);
-char *format_handler(char p[], const char *format, va_list args, int i);
+char *format_handler(char p[], const char *format, va_list args, int itep);
 
 /* return char * for buffer functions */
 
 char *print_int(va_list args, char *flagstr);
 char *print_string(va_list args, char *flagstr);
 char *print_char(va_list args, char *flagstr);
+
+/* special flags handlers */
+int handles_zeros(int itef, char *flags);
+int handles_padding(int itef, char *flags);
+char *final_string_generator(char *oristring, int flagstr[], int is_negative);
 
 /* Convert functions */
 
