@@ -3,15 +3,17 @@
 #include <stdio.h>
 /**
  * rev_string - function that reverses a string
- * @s: string to reverse
+ * @args: pointer to the current arg
+ * @flagstr: tmpBuffer
  * Return: reversed string
  */
-char *rev_string(va_list args,__attribute__((unused))char *flagstr)
+char *rev_string(va_list args, __attribute__((unused))char *flagstr)
 {
 	int i = 0;
 	int max, min, temp;
 	char *s = va_arg(args, char *);
 	char *str;
+
 	if (!s)
 		return (NULL);
 	min = 0;

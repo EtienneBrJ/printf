@@ -15,7 +15,7 @@
 typedef struct print
 {
 	char *m;
-        char *(*func)(va_list args, char *b);
+	char *(*func)(va_list args, char *b);
 } print_t;
 
 int _printf(const char *format, ...);
@@ -23,7 +23,7 @@ int _printf(const char *format, ...);
 char *(*get_cs_func(char c))(va_list, char *);
 
 char *flags_handler(char *flags, char *oristring, int is_negative);
-
+char *_addchar(char *dest, char c);
 char *_calloc(unsigned int nmemb, unsigned int size);
 
 /* prints functions */
