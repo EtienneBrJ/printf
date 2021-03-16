@@ -1,31 +1,32 @@
 #include "holberton.h"
 #include <stdlib.h>
+#include <stdio.h>
 /**
  * rot13 - encode a string into rot13
- * @s: string to convert
- * Return: s converted
+ * @args: pointer to the current arg
+ * @flagstr: temporary buffer
+ * Return: string encoded
  */
 char *rot13(va_list args, __attribute__((unused))char *flagstr)
 {
-	int i = 0, j;
+	int i, j, len;
+	char ROT13[] = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
+	char rot13[] = "nopqrstuvwxyzabcdefghijklmNOPQRSTUVWXYZABCDEFGHIJKLM";
+	char *r13 = va_arg(args, char *);
 
-	char a[52] = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
-	char b[52] = "nopqrstuvwxyzabcdefghijklmNOPQRSTUVWXYZABCDEFGHIJKLM";
-	char *s = va_arg(args, char *);
+	len = 0;
 
-	while (s[i])
-		i++;
-	s = _calloc(i + 1, sizeof(char));
-	for (i = 0; s[i] != '\0'; i++)
-	{
+	if (!r13)
+		return (NULL);
+
+	while (r13[len] != '\0')
+		len++;
+	r13 = _calloc(len + 1, sizeof(char));
+
+	for (i = 0; r13[i]; i++)
 		for (j = 0; j < 52; j++)
-		{
-			if (s[i] == a[j])
-			{
-				s[i] = b[j];
-				break;
-			}
-		}
-	}
-	return (s);
+			if (r13[i] == ROT13[j])
+				r13[i] = rot13[j];
+	return (r13);
+
 }

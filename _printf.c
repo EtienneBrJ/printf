@@ -14,7 +14,8 @@ int _printf(const char *format, ...)
 	char *buffer;
 	char finalBuffer[1024], p[2];
 
-	if (format == NULL || (format[0] == '%' && format[1] == '\0') || format[0] == '\0')
+	if (format == NULL || (format[0] == '%' && format[1] == '\0') ||
+	    format[0] == '\0')
 		return (-1);
 
 	va_start(args, format);
@@ -46,13 +47,17 @@ int _printf(const char *format, ...)
 		}
 	}
 	va_end(args);
-	count = _putnchar(finalBuffer); /*print (strlen(buffer)) chars*/
+	count = _putnchar(finalBuffer);
 	return (count);
 }
 
 /**
  * format_handler - handles the format
+ *
  * @format: Character string that tells us what to do
+ * @p: array
+ * @args: pointer to the current va_arg
+ * @i: index of format
  *
  * Return: Either 0 or -1
  */
@@ -88,10 +93,6 @@ char *format_handler(char p[], const char *format, va_list args, int i)
 		p[0] = format[i];
 		p[1] = '\0';
 		_strcat(tmpBuffer, p);
-		/*buffer = malloc(sizeof(char) * 50);
-		  if (buffer == NULL)
-		  return (-1); */
-
 		buffer = pfunc(args, tmpBuffer);
 		free(tmpBuffer);
 
