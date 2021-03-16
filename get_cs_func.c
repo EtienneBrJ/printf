@@ -15,10 +15,9 @@ char *(*get_cs_func(char c))(va_list, char *)
 		{"d", print_int},
 		{"i", print_int},
 		{"r", rev_string},
-		{"R", rot13}
-/*
- *{"b", convert_binary},
- *		{"u", print_uns_int},
+		{"R", rot13},
+		{"b", convert_binary}
+/*		{"u", print_uns_int},
  *		{"o", print_octal},
  *		{"x", print_hexa},
  *		{"X", print_upper_hexa},
@@ -29,7 +28,7 @@ char *(*get_cs_func(char c))(va_list, char *)
 	};
 
 	int i;
-	int size = 6;
+	int size = 7;
 
 	for (i = 0; i < size; i++)
 		if (*array[i].m == c)
