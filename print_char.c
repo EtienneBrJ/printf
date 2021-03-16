@@ -5,7 +5,7 @@
  * @args: pointer to the current va_arg
  * @flagstr: This a string of our flags, which we will apply
  *
- * Return: Our temporary buffer
+ * Return: Our temporary bufferr
  */
 char *print_char(va_list args, char *flagstr)
 {

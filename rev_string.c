@@ -14,6 +14,7 @@ char *rev_string(va_list args,__attribute__((unused))char *flagstr)
 	char *str;
 	if (!s)
 		return (NULL);
+
 	min = 0;
 	while (s[i] != '\0')
 	{
@@ -29,5 +30,6 @@ char *rev_string(va_list args,__attribute__((unused))char *flagstr)
 		str[max] = s[min];
 		str[min] = temp;
 	}
+
 	return (str);
 }
