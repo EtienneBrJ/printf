@@ -1,7 +1,7 @@
 #include "holberton.h"
 #include <stdlib.h>
 /**
- * _print_char - Add char to our buffer
+ * print_char - Add char to our buffer
  * @args: pointer to the current va_arg
  * @flagstr: This a string of our flags, which we will apply
  *
@@ -13,7 +13,8 @@ char *print_char(va_list args, char *flagstr)
 	char *s = malloc(sizeof(char) * 2);
 	*s = '\0';
 
-	flagstr = flagstr;
+	if (flagstr == NULL || args == NULL)
+		return (NULL);
 
 	if (c)
 	{
@@ -31,7 +32,7 @@ char *print_char(va_list args, char *flagstr)
 	}
 }
 /**
- * _print_string - Add a string to our buffer
+ * print_string - Add a string to our buffer
  * @args: pointer to the current va_arg
  * @flagstr: This a string of our flags, which we will apply
  *
@@ -42,6 +43,9 @@ char *print_string(va_list args, char *flagstr)
 	int ite = 0, count = 0;
 	char *s = va_arg(args, char *);
 	char *str;
+
+	if (flagstr == NULL || args == NULL)
+		return (NULL);
 
 	while (s[count] != '\0')
 		count++;

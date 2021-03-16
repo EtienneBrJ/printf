@@ -1,6 +1,6 @@
 #include "holberton.h"
 /**
- * *_strcat - This function appends the src string to the dest string.
+ * *_catbuf - This function appends the src string to the dest string.
  * @dest: the destination string
  * @src: the source string
  *
@@ -14,10 +14,8 @@ int _catbuf(char dest[], char *src)
 	while (dest[location] != '\0')
 		location++;
 
-/*	printf("this is bad\n"); */
 	while (src != NULL && src[ite] != '\0')
 	{
-/*		printf("this is awful\n"); */
 		dest[location] = src[ite];
 		ite++;
 		dest++;

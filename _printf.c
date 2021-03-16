@@ -17,7 +17,6 @@ int _printf(const char *format, ...)
 	if (format == NULL || (format[0] == '%' && format[1] == '\0') ||
 	    format[0] == '\0')
 		return (-1);
-
 	va_start(args, format);
 	finalBuffer[0] = '\0';
 	for (itep = 0; format[itep] != '\0'; itep++)
@@ -25,8 +24,7 @@ int _printf(const char *format, ...)
 		if (format[itep] == '%' && format[itep + 1] == '%')
 		{
 			itep++;
-			p[0] = format[itep];
-			p[1] = '\0';
+			p[0] = format[itep], p[1] = '\0';
 			_strcat(finalBuffer, p);
 			itep++;
 		}
@@ -34,8 +32,10 @@ int _printf(const char *format, ...)
 		{
 			itep++;
 			buffer = format_handler(p, format, args, itep);
+			if (buffer == NULL)
+				return (-1);
 			while (get_cs_func(format[itep]) == NULL && format[itep] != '\0')
-			itep++;
+				itep++;
 			_catbuf(finalBuffer, buffer);
 			free(buffer);
 		}
@@ -47,7 +47,7 @@ int _printf(const char *format, ...)
 		}
 	}
 	va_end(args);
-	count = _putnchar(finalBuffer); /*print (strlen(buffer)) chars*/
+	count = _putnchar(finalBuffer);
 	return (count);
 }
 
@@ -92,7 +92,6 @@ char *format_handler(char p[], const char *format, va_list args, int itep)
 		p[0] = format[itep];
 		p[1] = '\0';
 		_strcat(tmpBuffer, p);
-
 		buffer = pfunc(args, tmpBuffer);
 		free(tmpBuffer);
 
