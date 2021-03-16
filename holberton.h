@@ -38,8 +38,10 @@ char *print_char(va_list args, char *flagstr);
 /* Convert functions */
 
 int _atoi(char *s);
-char *rot13(char *s);
-char * rev_string(va_list args,__attribute__((unused))char *flagstr);
+
+char *rot13(va_list args, __attribute__((unused))char *flagstr);
+char *rev_string(va_list args, __attribute__((unused))char *flagstr);
+
 
 /* cat functions */
 
