@@ -23,8 +23,7 @@ int _printf(const char *format, ...)
 	{
 		if (format[itep] == '%' && format[itep + 1] == '%')
 		{
-			itep++;
-			p[0] = format[itep], p[1] = '\0';
+			itep++,	p[0] = format[itep], p[1] = '\0';
 			_strcat(finalBuffer, p);
 			itep++;
 		}
@@ -41,13 +40,14 @@ int _printf(const char *format, ...)
 		}
 		else
 		{
-			p[0] = format[itep];
-			p[1] = '\0';
+			p[0] = format[itep], p[1] = '\0';
 			_strcat(finalBuffer, p);
 		}
 	}
 	va_end(args);
 	count = _putnchar(finalBuffer);
+	if (!count)
+		count = -1;
 	return (count);
 }
 
