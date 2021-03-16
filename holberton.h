@@ -24,10 +24,13 @@ char *(*get_cs_func(char c))(va_list, char *);
 
 char *flags_handler(char *flags, char *oristring, int is_negative);
 
+char *_calloc(unsigned int nmemb, unsigned int size);
+
 /* prints functions */
 
 int _putchar(char c);
 int _putnchar(char buffer[]);
+char *format_handler(char p[], const char *format, va_list args, int i);
 
 /* return char * for buffer functions */
 

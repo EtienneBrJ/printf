@@ -7,8 +7,7 @@
  */
 char *rot13(va_list args, __attribute__((unused))char *flagstr)
 {
-	int i, j;
-	i = 0;
+	int i = 0, j;
 
 	char a[52] = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
 	char b[52] = "nopqrstuvwxyzabcdefghijklmNOPQRSTUVWXYZABCDEFGHIJKLM";
