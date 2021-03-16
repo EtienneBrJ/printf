@@ -46,7 +46,7 @@ int _printf(const char *format, ...)
 		}
 	}
 	va_end(args);
-	count = _putnchar(finalBuffer); /*print (strlen(buffer)) chars*/
+	count = _putnchar(finalBuffer);
 	return (count);
 }
 
