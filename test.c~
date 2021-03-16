@@ -1,0 +1,7 @@
+#include "holberton.h"
+int main(void)
+{
+	_printf("%r\n", "Holberto");
+	_printf("%r\n", "Holberton");
+	return (0);
+}
