@@ -47,7 +47,7 @@ int _printf(const char *format, ...)
 		}
 	}
 	va_end(args);
-	count = _putnchar(finalBuffer); /*print (strlen(buffer)) chars*/
+	count = _putnchar(finalBuffer);
 	return (count);
 }
 
@@ -92,7 +92,6 @@ char *format_handler(char p[], const char *format, va_list args, int itep)
 		p[0] = format[itep];
 		p[1] = '\0';
 		_strcat(tmpBuffer, p);
-
 		buffer = pfunc(args, tmpBuffer);
 		free(tmpBuffer);
 
