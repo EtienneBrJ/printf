@@ -21,7 +21,6 @@ typedef struct print
 int _printf(const char *format, ...);
 
 char *(*get_cs_func(char c))(va_list, char *);
-char *_memcpy(char *dest, char *src, unsigned int n);
 char *flags_handler(char *flags, char *oristring, int is_negative);
 char *_addchar(char *dest, char c);
 char *_calloc(unsigned int nmemb, unsigned int size);
