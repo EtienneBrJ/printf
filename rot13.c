@@ -10,8 +10,9 @@
 char *rot13(va_list args, __attribute__((unused))char *flagstr)
 {
 	int i, j, len;
-	char ROT13[] = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
-	char rot13[] = "nopqrstuvwxyzabcdefghijklmNOPQRSTUVWXYZABCDEFGHIJKLM";
+	char *ROT13 = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
+	char *rot13 = "nopqrstuvwxyzabcdefghijklmNOPQRSTUVWXYZABCDEFGHIJKLM";
+	char *s;
 	char *r13 = va_arg(args, char *);
 
 	len = 0;
@@ -21,12 +22,17 @@ char *rot13(va_list args, __attribute__((unused))char *flagstr)
 
 	while (r13[len] != '\0')
 		len++;
-	r13 = _calloc(len + 1, sizeof(char));
 
-	for (i = 0; r13[i]; i++)
-		for (j = 0; j < 52; j++)
-			if (r13[i] == ROT13[j])
-				r13[i] = rot13[j];
-	return (r13);
+	s = _calloc(len + 1, sizeof(char));
+	_strcat(s, r13);
+
+	for (i = 0; s[i]; i++)
+		for (j = 0; ROT13[j]; j++)
+			if (s[i] == ROT13[j])
+			{
+				s[i] = rot13[j];
+				break;
+			}
+	return (s);
 
 }

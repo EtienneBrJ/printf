@@ -1,0 +1,11 @@
+#include <limits.h>
+#include <stdio.h>
+#include "holberton.h"
+
+int main(void)
+{
+	_printf("%r\n", "Holberton");
+	_printf("%R\n", "Holberton");
+
+	return (0);
+}
