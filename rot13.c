@@ -15,7 +15,7 @@ char *rot13(va_list args, __attribute__((unused))char *flagstr)
 
 	while (s[i])
 		i++;
-	s = malloc(sizeof(char) * (i + 1));
+	s = _calloc(i + 1, sizeof(char));
 	for (i = 0; s[i] != '\0'; i++)
 	{
 		for (j = 0; j < 52; j++)
