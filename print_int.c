@@ -41,9 +41,9 @@ char *print_int(va_list args, char *flagstr)
 		tmpstring[len - (ite + 1)] = rem + '0';
 	}
 	tmpstring[len] = '\0';
-
 	resultstring = flags_handler(flagstr, tmpstring, is_negative);
-
+	if (resultstring == NULL)
+		return (NULL);
 	return (resultstring);
 }
 
