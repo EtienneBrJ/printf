@@ -113,10 +113,8 @@ char *final_string_generator(char *oristring, int flagstr[], int is_negative)
 	int zeros = 0, count = 0, spaces = 0, ite3 = 0;
 
 	tmpstring[0] = '\0';
-
 	while (oristring[count] != '\0')
 		count++;
-
 	if (flagstr[0] != 0)
 	{
 		zeros = flagstr[0] - count;
@@ -149,7 +147,6 @@ char *final_string_generator(char *oristring, int flagstr[], int is_negative)
 	_strcat(resultstring, tmpstring);
 	while (spaces > 0)
 		resultstring[count] = ' ', spaces -= 1, ite3++, count++;
-
 	resultstring[count] = '\0';
 	return (resultstring);
 }

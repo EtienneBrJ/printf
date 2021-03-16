@@ -10,8 +10,7 @@
 int _printf(const char *format, ...)
 {
 	va_list args;
-	int itep;
-	int count = 0;
+	int itep = 0, count = 0;
 	char *buffer;
 	char finalBuffer[1024], p[2];
 
@@ -19,11 +18,8 @@ int _printf(const char *format, ...)
 	    format[0] == '\0')
 		return (-1);
 
-	itep = 0;
 	va_start(args, format);
-
 	finalBuffer[0] = '\0';
-
 	for (itep = 0; format[itep] != '\0'; itep++)
 	{
 		if (format[itep] == '%' && format[itep + 1] == '%')
@@ -60,7 +56,7 @@ int _printf(const char *format, ...)
  * @p: current character of format
  * @format: Character string that tells us what to do
  * @args: current va_list
- * @i: current spot in our iteration
+ * @itep: current spot in our iteration
  *
  * Return: Either 0 or -1
  */
