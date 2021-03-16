@@ -12,7 +12,7 @@ int _printf(const char *format, ...)
 	va_list args;
 	int itep = 0, count = 0;
 	char *buffer;
-	char finalBuffer[1024], p[2];
+	char finalBuffer[BUFFER_SIZE], p[2];
 
 	if (format == NULL || (format[0] == '%' && format[1] == '\0') ||
 	    format[0] == '\0')
