@@ -16,8 +16,8 @@ char *_strcat(char *dest, char *src)
 	while (*src != '\0')
 	{
 		*dest = *src;
-		/* on est au début de la string src, et à la fin de la string dest */
-		/* ^l'index actuel de la string dest devient l'index actuel de la string src */
+/* on est au début de la string src, et à la fin de la string dest */
+/* ^l'index actuel de la string dest devient l'index actuel de la string src */
 		src++;
 		dest++;
 	}

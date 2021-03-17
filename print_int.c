@@ -109,42 +109,42 @@ char *flags_handler(char *flags, char *oristring, int is_negative)
  */
 char *final_string_generator(char *oristring, int flagstr[], int is_negative)
 {
-	char tmpstring[20], *resultstring;
+	char *teststring, *resultstring;
 	int zeros = 0, count = 0, spaces = 0, ite3 = 0;
 
-	tmpstring[0] = '\0';
 	while (oristring[count] != '\0')
 		count++;
+	teststring = _calloc(sizeof(char), count + 1 + flagstr[3] +
+			     flagstr[4] + flagstr[5] + 1);
 	if (flagstr[0] != 0)
 	{
 		zeros = flagstr[0] - count;
 		while (zeros > 0)
-			tmpstring[ite3] = '0', zeros -= 1, ite3++, count++;
+			teststring[ite3] = '0', zeros -= 1, ite3++, count++;
 	}
 	if (flagstr[1] != 0)
-		tmpstring[ite3] = '+', count++;
+		teststring[ite3] = '+', count++;
 	else if (flagstr[2] != 0)
-		tmpstring[ite3] = ' ', count++;
+		teststring[ite3] = ' ', count++;
 	else if (is_negative == 1)
-		tmpstring[ite3] = '-', count++;
+		teststring[ite3] = '-', count++;
 	if (flagstr[3] != 0)
 	{
 		zeros = flagstr[3] - count;
 		while (zeros > 0)
-			tmpstring[ite3] = '0', zeros -= 1, ite3++, count++;
+			teststring[ite3] = '0', zeros -= 1, ite3++, count++;
 	}
-	_strcat(tmpstring, oristring);
+	_strcat(teststring, oristring);
 	if (flagstr[5] != 0)
 		spaces = flagstr[5] - count;
-
 	resultstring = _calloc(sizeof(char), (spaces + count + 1));
 	if (flagstr[4] == 0)
 	{
-		ite3 = 0;
-		while (spaces > 0)
-			resultstring[ite3] = ' ', spaces -= 1, count++, ite3++;
+		for (ite3 = 0; spaces > 0; ite3++)
+			resultstring[ite3] = ' ', spaces -= 1, count++;
 	}
-	_strcat(resultstring, tmpstring);
+	_strcat(resultstring, teststring);
+	free(teststring);
 	while (spaces > 0)
 		resultstring[count] = ' ', spaces -= 1, ite3++, count++;
 	resultstring[count] = '\0';

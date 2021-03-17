@@ -10,7 +10,7 @@
 int _printf(const char *format, ...)
 {
 	va_list args;
-	int itep = 0, count = 0;
+	int itep = 0, total = 0;
 	char *buffer;
 	char finalBuffer[BUFFER_SIZE], p[2];
 
@@ -23,30 +23,29 @@ int _printf(const char *format, ...)
 	{
 		if (format[itep] == '%' && format[itep + 1] == '%')
 		{
-			itep++,	p[0] = format[itep], p[1] = '\0';
-			_strcat(finalBuffer, p);
-			itep++;
+			itep++, p[0] = format[itep], p[1] = '\0';
+			total += empty_buffer(finalBuffer, p, total);
 		}
-		if (format[itep] == '%' && format[itep + 1] != '\0')
+		else if (format[itep] == '%' && format[itep + 1] != '\0')
 		{
 			itep++;
 			buffer = format_handler(p, format, args, itep);
 			while (get_cs_func(format[itep]) == NULL && format[itep] != '\0')
 				itep++;
-			_catbuf(finalBuffer, buffer);
+			total += empty_buffer(finalBuffer, buffer, total);
 			free(buffer);
 		}
 		else
 		{
 			p[0] = format[itep], p[1] = '\0';
-			_strcat(finalBuffer, p);
+			total += empty_buffer(finalBuffer, p, total);
 		}
 	}
 	va_end(args);
-	count = _putnchar(finalBuffer);
-	if (!count)
-		count = -1;
-	return (count);
+	total += _putnchar(finalBuffer);
+	if (!total)
+		total = -1;
+	return (total);
 }
 
 /**
