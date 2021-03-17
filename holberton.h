@@ -54,7 +54,7 @@ char *rev_string(va_list args, __attribute__((unused))char *flagstr);
 
 /* cat functions */
 
-int _catbuf(char dest[], char *src);
+int empty_buffer(char dest[], char *src, int count);
 char *_strcat(char *dest, char *src);
 
 #endif

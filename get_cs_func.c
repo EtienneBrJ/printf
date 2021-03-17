@@ -17,14 +17,15 @@ char *(*get_cs_func(char c))(va_list, char *)
 		{"r", rev_string},
 		{"R", rot13},
 		{"b", convert_binary}
-/*		{"u", print_uns_int},
+/*
+ *		{"u", print_uns_int},
  *		{"o", print_octal},
  *		{"x", print_hexa},
  *		{"X", print_upper_hexa},
  *		{"S", print_string},
  *		{"p", print_pointer},
  *		{"R", pirnt_string_ROT13}
-*/
+ */
 	};
 
 	int i;

@@ -31,6 +31,7 @@ char *print_char(va_list args, char *flagstr)
 		return (s);
 	}
 }
+
 /**
  * print_string - Add a string to our buffer
  * @args: pointer to the current va_arg
@@ -53,7 +54,7 @@ char *print_string(va_list args, char *flagstr)
 	{
 		str = _calloc(sizeof(char), (7));
 		str = _strcat(str, "(null)");
-		return(str);
+		return (str);
 	}
 	if (s[0] == '\0')
 		return (NULL);
@@ -61,7 +62,7 @@ char *print_string(va_list args, char *flagstr)
 	while (s[count] != '\0')
 		count++;
 
-	str = malloc(sizeof(char) * (count + 1));
+	str = _calloc(sizeof(char), (count + 1));
 
 	flagstr = flagstr;
 

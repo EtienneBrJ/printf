@@ -1,28 +1,19 @@
 #include "holberton.h"
+
 /**
- * _putnchar - print n char
- * @buffer: string to print
- * Return: count
+ * _putnchar - Prints a buffer.
+ * @buffer: buffer to print
+ *
+ * Return: Number of characters printed
  */
 int _putnchar(char buffer[])
-
 {
-
-	int ite = 0;
 	int count = 0;
 
-	while (buffer[ite] != '\0')
-
-	{
-
+	while (buffer[count] != '\0')
 		count++;
-
-		ite++;
-
-	}
 
 	write(1, buffer, count);
 
 	return (count);
-
 }

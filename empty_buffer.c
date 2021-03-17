@@ -1,12 +1,14 @@
 #include "holberton.h"
+
 /**
- * *_catbuf - This function appends the src string to the dest string.
+ * empty_buffer - This function empty the buffer when its full and calls print
  * @dest: the destination string
  * @src: the source string
+ * @count: the total number of characters printed by printf so far
  *
  * Return: A pointer to the dest string
  */
-int _catbuf(char dest[], char *src)
+int empty_buffer(char dest[], char *src, int count)
 {
 	int location = 0;
 	int ite = 0;
@@ -16,10 +18,15 @@ int _catbuf(char dest[], char *src)
 
 	while (src != NULL && src[ite] != '\0')
 	{
+		if (location == BUFFER_SIZE)
+		{
+			count += _putnchar(dest);
+			location = 0;
+		}
 		dest[location] = src[ite];
 		ite++;
-		dest++;
+		location++;
 	}
 	dest[location] = '\0';
-	return (location);
+	return (count);
 }
