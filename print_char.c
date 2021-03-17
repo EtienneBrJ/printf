@@ -13,7 +13,7 @@ char *print_char(va_list args, char *flagstr)
 	char *s = malloc(sizeof(char) * 2);
 	*s = '\0';
 
-	if (flagstr == NULL || args == NULL)
+	if (!flagstr || !args)
 		return ("(null)");
 
 	if (c)
@@ -41,11 +41,13 @@ char *print_char(va_list args, char *flagstr)
 char *print_string(va_list args, char *flagstr)
 {
 	int ite = 0, count = 0;
-	char *s = va_arg(args, char *);
+	char *s;
 	char *str;
 
 	if (!flagstr || !args)
 		return (0);
+
+	s = va_arg(args, char *);
 
 	if (s == NULL)
 	{
@@ -53,6 +55,8 @@ char *print_string(va_list args, char *flagstr)
 		str = _strcat(str, "(null)");
 		return(str);
 	}
+	if (s[0] == '\0')
+		return (NULL);
 
 	while (s[count] != '\0')
 		count++;

@@ -31,8 +31,6 @@ int _printf(const char *format, ...)
 		{
 			itep++;
 			buffer = format_handler(p, format, args, itep);
-			if (buffer == NULL)
-				return (-1);
 			while (get_cs_func(format[itep]) == NULL && format[itep] != '\0')
 				itep++;
 			_catbuf(finalBuffer, buffer);
