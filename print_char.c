@@ -14,7 +14,7 @@ char *print_char(va_list args, char *flagstr)
 	*s = '\0';
 
 	if (flagstr == NULL || args == NULL)
-		return (NULL);
+		return ("(null)");
 
 	if (c)
 	{
@@ -44,8 +44,15 @@ char *print_string(va_list args, char *flagstr)
 	char *s = va_arg(args, char *);
 	char *str;
 
-	if (flagstr == NULL || args == NULL)
-		return (NULL);
+	if (!flagstr || !args)
+		return (0);
+
+	if (s == NULL)
+	{
+		str = _calloc(sizeof(char), (7));
+		str = _strcat(str, "(null)");
+		return(str);
+	}
 
 	while (s[count] != '\0')
 		count++;
@@ -64,5 +71,5 @@ char *print_string(va_list args, char *flagstr)
 		return (str);
 	}
 
-	return (NULL);
+	return ("(null)");
 }
