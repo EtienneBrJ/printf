@@ -1,0 +1,12 @@
+#include <limits.h>
+#include <stdio.h>
+#include "holberton.h"
+
+int main(void)
+{
+	_printf("%r\n", "Holberton");
+	_printf("%R\n", "Holberton");
+	_printf("%R\n", "Coucou");
+	_printf("%b\n", 4);
+	return (0);
+}
