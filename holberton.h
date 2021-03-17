@@ -23,7 +23,6 @@ typedef struct print
 int _printf(const char *format, ...);
 
 char *(*get_cs_func(char c))(va_list, char *);
-
 char *flags_handler(char *flags, char *oristring, int is_negative);
 char *_addchar(char *dest, char c);
 char *_calloc(unsigned int nmemb, unsigned int size);
@@ -48,7 +47,7 @@ char *final_string_generator(char *oristring, int flagstr[], int is_negative);
 /* Convert functions */
 
 int _atoi(char *s);
-
+char *convert_binary(va_list args, __attribute__((unused))char *flagstr);
 char *rot13(va_list args, __attribute__((unused))char *flagstr);
 char *rev_string(va_list args, __attribute__((unused))char *flagstr);
 
