@@ -12,8 +12,8 @@
 char *convert_binary(va_list args, __attribute__((unused))char *flagstr)
 {
 	char *res;
-	char s[20];
-	char result[20];
+	char s[1024];
+	char result[1024];
 	int ite, n, max;
 
 	unsigned int i = 0;

@@ -14,6 +14,13 @@ char *rev_string(va_list args, __attribute__((unused))char *flagstr)
 	char *s = va_arg(args, char *);
 	char *str;
 
+	if (s == NULL)
+	{
+		str = _calloc(sizeof(char), (7));
+		str = _strcat(str, "(null)");
+		return (str);
+	}
+
 	if (!s)
 		return (NULL);
 	min = 0;
