@@ -11,7 +11,7 @@
  **/
 char *convert_binary(va_list args, __attribute__((unused))char *flagstr)
 {
-	char *res;
+	char *res = "Holberton";
 	char s[20];
 	int ite, n, max;
 	unsigned int i = 0;
@@ -24,7 +24,7 @@ char *convert_binary(va_list args, __attribute__((unused))char *flagstr)
 		n = n / 2;
 		i++;
 	}
-	res = _calloc(i + 1, sizeof(char));
+	res = _calloc(9 + 1, sizeof(char));
 	max = i - 1;
 	printf("%d : s[0] - %d : s[1] - %d : s[2]\n", s[0], s[1], s[2]);
 	for (ite = 0; max > -1; ite++, max--, i--)

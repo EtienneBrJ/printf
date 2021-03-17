@@ -10,58 +10,57 @@
 int _printf(const char *format, ...)
 {
 	va_list args;
-	int i, count = 0;
+	int itep = 0, count = 0;
 	char *buffer;
-	char finalBuffer[1024], p[2];
+	char finalBuffer[BUFFER_SIZE], p[2];
 
 	if (format == NULL || (format[0] == '%' && format[1] == '\0') ||
 	    format[0] == '\0')
 		return (-1);
-
 	va_start(args, format);
-
 	finalBuffer[0] = '\0';
-
-	for (i = 0; format[i] != '\0'; i++)
+	for (itep = 0; format[itep] != '\0'; itep++)
 	{
-		if (format[i] == '%' && format[i + 1] == '%')
+		if (format[itep] == '%' && format[itep + 1] == '%')
 		{
-			i++;
-			p[0] = format[i];
-			p[1] = '\0';
+			itep++,	p[0] = format[itep], p[1] = '\0';
 			_strcat(finalBuffer, p);
-			i++;
+			itep++;
 		}
-		if (format[i] == '%' && format[i + 1] != '\0')
+		if (format[itep] == '%' && format[itep + 1] != '\0')
 		{
-			i++;
-			buffer = format_handler(p, format, args, i);
+			itep++;
+			buffer = format_handler(p, format, args, itep);
+			if (buffer == NULL)
+				return (-1);
+			while (get_cs_func(format[itep]) == NULL && format[itep] != '\0')
+				itep++;
 			_catbuf(finalBuffer, buffer);
 			free(buffer);
 		}
 		else
 		{
-			p[0] = format[i];
-			p[1] = '\0';
+			p[0] = format[itep], p[1] = '\0';
 			_strcat(finalBuffer, p);
 		}
 	}
 	va_end(args);
 	count = _putnchar(finalBuffer);
+	if (!count)
+		count = -1;
 	return (count);
 }
 
 /**
  * format_handler - handles the format
- *
+ * @p: current character of format
  * @format: Character string that tells us what to do
- * @p: array
- * @args: pointer to the current va_arg
- * @i: index of format
+ * @args: current va_list
+ * @itep: current spot in our iteration
  *
  * Return: Either 0 or -1
  */
-char *format_handler(char p[], const char *format, va_list args, int i)
+char *format_handler(char p[], const char *format, va_list args, int itep)
 {
 	char *tmpBuffer, *buffer;
 	char *(*pfunc)(va_list, char *);
@@ -74,23 +73,23 @@ char *format_handler(char p[], const char *format, va_list args, int i)
 	if (buffer == NULL)
 		return (NULL);
 
-	while (get_cs_func(format[i]) == NULL && format[i] != '\0')
+	while (get_cs_func(format[itep]) == NULL && format[itep] != '\0')
 	{
-		p[0] = format[i];
+		p[0] = format[itep];
 		p[1] = '\0';
 		_strcat(tmpBuffer, p);
-		i++;
+		itep++;
 	}
-	if (format[i] == '\0')
+	if (format[itep] == '\0')
 	{
 		_strcat(buffer, tmpBuffer);
 		free(tmpBuffer);
 	}
-	else if (get_cs_func(format[i]) != NULL)
+	else if (get_cs_func(format[itep]) != NULL)
 	{
-		pfunc = get_cs_func(format[i]);
+		pfunc = get_cs_func(format[itep]);
 
-		p[0] = format[i];
+		p[0] = format[itep];
 		p[1] = '\0';
 		_strcat(tmpBuffer, p);
 		buffer = pfunc(args, tmpBuffer);
