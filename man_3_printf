@@ -11,7 +11,7 @@
 .sp
 .RB _printf
 .I FORMAT
-.BI [ARGUMENTS]
+.B [ARGUMENTS]
 .SH DESCRIPTION
 .BR _printf
 is a variadic function thats prints
@@ -63,6 +63,11 @@ Format can contain conversion specifier. These starts with '%' and are followed 
 .B R
 :
 .B convert a string in ROT13 encryption
+.sp
+-
+.B b
+:
+.B convert a decimal number into binary
 .SH NOTES
 _printf use a character printing function called _putchar, that use the system
 write(2).

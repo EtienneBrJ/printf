@@ -35,7 +35,7 @@ char *format_handler(char p[], const char *format, va_list args, int itep);
 /* return char * for buffer functions */
 
 char *print_int(va_list args, char *flagstr);
-char *print_string(va_list args, char *flagstr);
+char *print_string(va_list args, __attribute__((unused))char *flagstr);
 char *print_char(va_list args, char *flagstr);
 
 /* special flags handlers */

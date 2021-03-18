@@ -7,13 +7,13 @@
  *
  * Return: Our temporary bufferr
  */
-char *print_char(va_list args, char *flagstr)
+char *print_char(va_list args, __attribute__((unused))char *flagstr)
 {
 	char c = va_arg(args, int);
 	char *s = malloc(sizeof(char) * 2);
 	*s = '\0';
 
-	if (!flagstr || !args)
+	if (!args)
 		return ("(null)");
 
 	if (c)
@@ -39,7 +39,7 @@ char *print_char(va_list args, char *flagstr)
  *
  * Return: Our temporary buffer
  */
-char *print_string(va_list args, char *flagstr)
+char *print_string(va_list args, __attribute__((unused))char *flagstr)
 {
 	int ite = 0, count = 0;
 	char *s;
@@ -64,8 +64,6 @@ char *print_string(va_list args, char *flagstr)
 
 	str = _calloc(sizeof(char), (count + 1));
 
-	flagstr = flagstr;
-
 	if (s[0])
 	{
 		while (s[ite] != '\0')
@@ -76,5 +74,4 @@ char *print_string(va_list args, char *flagstr)
 		return (str);
 	}
 
-	return ("(null)");
 }
