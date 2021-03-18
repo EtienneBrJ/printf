@@ -16,7 +16,7 @@ int _putnchar(char buffer[])
 
 	write(1, buffer, count);
 
-	for (ite = 0; ite > 1023; ite++)
+	for (ite = 0; ite < 1024; ite++)
 		buffer[ite] = '\0';
 
 	return (count);

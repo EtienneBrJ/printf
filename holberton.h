@@ -13,7 +13,6 @@
  */
 
 #define BUFFER_SIZE 1024
-
 typedef struct print
 {
 	char *m;
