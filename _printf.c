@@ -29,7 +29,7 @@ int _printf(const char *format, ...)
 		else if (format[itep] == '%' && format[itep + 1] != '\0')
 		{
 			itep++;
-			buffer = format_handler(p, format, args, &itep);
+			buffer = format_handler(p, format, args, &itep, &total);
 			total += empty_buffer(finalBuffer, buffer, total);
 			free(buffer);
 			if (format[itep] == '\0')
@@ -53,25 +53,24 @@ int _printf(const char *format, ...)
  * @format: Character string that tells us what to do
  * @args: current va_list
  * @itep: current spot in our iteration
+ * @total: a pointer to the total character printed
  *
  * Return: Either 0 or -1
  */
-char *format_handler(char p[], const char *format, va_list args, int *itep)
+char *format_handler(char p[], const char *format, va_list args, int *itep,
+		     int *total)
 {
 	char *tmpBuffer, *buffer, *per_string, *temp;
 	char *(*pfunc)(va_list, char *);
 
 	per_string = _calloc(20, sizeof(char));
 	per_string[0] = '%';
-
 	tmpBuffer = _calloc(20, sizeof(char));
 	if (tmpBuffer == NULL)
 		return (NULL);
-
 	buffer = _calloc(5000, sizeof(char));
 	if (buffer == NULL)
 		return (NULL);
-
 	while (get_cs_func(format[*itep]) == NULL && format[*itep] != '\0')
 	{
 		p[0] = format[*itep];
@@ -92,6 +91,9 @@ char *format_handler(char p[], const char *format, va_list args, int *itep)
 		p[1] = '\0';
 		_strcat(tmpBuffer, p);
 		temp = pfunc(args, tmpBuffer);
+		if (temp)
+			if (temp[0] == '^')
+				temp[0] = '\0', (*total)++;
 		_catbuf(buffer, temp);
 		free(temp);
 		free(tmpBuffer);
