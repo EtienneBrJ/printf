@@ -9,15 +9,15 @@
 int _putnchar(char buffer[])
 {
 	int count = 0;
-	int ite;
+	int ite, test;
 
 	while (buffer[count] != '\0')
 		count++;
 
-	write(1, buffer, count);
+	test = write(1, buffer, count);
 
-	for (ite = 0; ite < 1024; ite++)
+	for (ite = 0; ite < BUFFER_SIZE; ite++)
 		buffer[ite] = '\0';
 
-	return (count);
+	return (test);
 }
