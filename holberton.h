@@ -30,7 +30,7 @@ char *_calloc(unsigned int nmemb, unsigned int size);
 
 int _putchar(char c);
 int _putnchar(char buffer[]);
-char *format_handler(char p[], const char *format, va_list args, int itep);
+char *format_handler(char p[], const char *format, va_list args, int *itep);
 
 /* return char * for buffer functions */
 
@@ -55,5 +55,6 @@ char *rev_string(va_list args, __attribute__((unused))char *flagstr);
 
 int empty_buffer(char dest[], char *src, int count);
 char *_strcat(char *dest, char *src);
+int _catbuf(char *dest, char *src);
 
 #endif

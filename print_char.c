@@ -10,24 +10,22 @@
 char *print_char(va_list args, __attribute__((unused))char *flagstr)
 {
 	char c = va_arg(args, int);
-	char *s = malloc(sizeof(char) * 2);
-	*s = '\0';
+	char *s;
 
 	if (!args)
-		return ("(null)");
+		return (NULL);
 
+	s = _calloc(sizeof(char), 2);
 	if (c)
 	{
 		s[0] = c;
 		s[1] = '\0';
-
 		return (s);
 	}
 	else
 	{
 		s[0] = '\0';
 		s[1] = '\0';
-
 		return (s);
 	}
 }
@@ -62,7 +60,7 @@ char *print_string(va_list args, __attribute__((unused))char *flagstr)
 	while (s[count] != '\0')
 		count++;
 
-	str = _calloc(sizeof(char), (count + 1));
+	str = _calloc(sizeof(char), count + 1);
 
 	if (s[0])
 	{
@@ -71,8 +69,8 @@ char *print_string(va_list args, __attribute__((unused))char *flagstr)
 			str[ite] = s[ite];
 			ite++;
 		}
+		str[ite] = '\0';
 		return (str);
 	}
 	return (str);
-
 }
