@@ -16,6 +16,12 @@ char *print_char(va_list args, __attribute__((unused))char *flagstr)
 		return (NULL);
 
 	s = _calloc(sizeof(char), 2);
+	if (c == '\0')
+	{
+		s[0] = '^';
+		s[1] = '\0';
+		return (s);
+	}
 	if (c)
 	{
 		s[0] = c;
