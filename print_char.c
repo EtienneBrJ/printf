@@ -43,7 +43,7 @@ char *print_string(va_list args, char *flagstr)
 	char *s;
 	char *str;
 
-	if (!flagstr || !args)
+	if (!args)
 		return (0);
 
 	s = va_arg(args, char *);

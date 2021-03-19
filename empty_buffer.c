@@ -13,6 +13,8 @@ int empty_buffer(char dest[], char *src, int count)
 	int location = 0;
 	int ite = 0;
 
+	count = 0;
+
 	while (dest[location] != '\0')
 		location++;
 
@@ -20,6 +22,7 @@ int empty_buffer(char dest[], char *src, int count)
 	{
 		if (location == BUFFER_SIZE)
 		{
+			dest[location] = '\0';
 			count += _putnchar(dest);
 			location = 0;
 		}

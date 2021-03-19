@@ -18,6 +18,7 @@ int _printf(const char *format, ...)
 		return (-1);
 	va_start(args, format);
 	finalBuffer[0] = '\0';
+
 	while (format[itep] != '\0')
 	{
 		if (format[itep] == '%' && format[itep + 1] == '%')
@@ -67,13 +68,13 @@ char *format_handler(char p[], const char *format, va_list args, int *itep)
 	if (tmpBuffer == NULL)
 		return (NULL);
 
-	buffer = _calloc(50, sizeof(char));
+	buffer = _calloc(5000, sizeof(char));
 	if (buffer == NULL)
 		return (NULL);
 
 	while (get_cs_func(format[*itep]) == NULL && format[*itep] != '\0')
 	{
-		p[0] = format[(*itep)];
+		p[0] = format[*itep];
 		p[1] = '\0';
 		_strcat(tmpBuffer, p);
 		(*itep)++;
@@ -84,10 +85,10 @@ char *format_handler(char p[], const char *format, va_list args, int *itep)
 		_strcat(buffer, per_string);
 		free(tmpBuffer);
 	}
-	else if (get_cs_func(format[(*itep)]) != NULL)
+	else if (get_cs_func(format[*itep]) != NULL)
 	{
-		pfunc = get_cs_func(format[(*itep)]);
-		p[0] = format[(*itep)];
+		pfunc = get_cs_func(format[*itep]);
+		p[0] = format[*itep];
 		p[1] = '\0';
 		_strcat(tmpBuffer, p);
 		temp = pfunc(args, tmpBuffer);
