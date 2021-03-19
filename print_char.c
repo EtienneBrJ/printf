@@ -73,5 +73,6 @@ char *print_string(va_list args, __attribute__((unused))char *flagstr)
 		}
 		return (str);
 	}
+	return (str);
 
 }
