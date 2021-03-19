@@ -19,6 +19,8 @@ char *print_int(va_list args, char *flagstr)
 	if (args == NULL)
 		return (NULL);
 	tmpstring = _calloc(sizeof(int), 20);
+	if (tmpstring == NULL)
+		return (NULL);
 	num = va_arg(args, int);
 	num_decoy = num;
 	if (num < 0)
@@ -35,10 +37,7 @@ char *print_int(va_list args, char *flagstr)
 		return (resultstring);
 	}
 	while (num_decoy != 0)
-	{
-		len++;
-		num_decoy /= 10;
-	}
+		len++, num_decoy /= 10;
 	for (ite = 0; ite < len; ite++)
 	{
 		rem = unsigned_num % 10;
