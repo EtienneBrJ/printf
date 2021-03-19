@@ -1,6 +1,6 @@
 #include "holberton.h"
-
 #include <stdlib.h>
+#include <limits.h>
 
 /**
  * print_int - Adds integers to our buffer
@@ -9,26 +9,31 @@
  *
  * Return: Our temporary buffer
  */
-
 char *print_int(va_list args, char *flagstr)
 {
-	int ite, rem = 0, len = 0, num, num_decoy, is_negative = 0;
+	int ite, num, rem = 0, len = 0, is_negative = 0;
+	unsigned int num_decoy, unsigned_num;
 
-	char tmpstring[50], *resultstring;
+	char *tmpstring, *resultstring;
 
 	if (args == NULL)
 		return (NULL);
-
+	tmpstring = _calloc(sizeof(int), 20);
 	num = va_arg(args, int);
-
+	num_decoy = num;
 	if (num < 0)
 	{
-		num = -num;
+		num_decoy = -num;
 		is_negative = 1;
 	}
-
-	num_decoy = num;
-
+	unsigned_num = num_decoy;
+	if (num == 0)
+	{
+		free(tmpstring);
+		resultstring = _calloc(sizeof(int), 2);
+		resultstring[0] = '0';
+		return (resultstring);
+	}
 	while (num_decoy != 0)
 	{
 		len++;
@@ -36,12 +41,13 @@ char *print_int(va_list args, char *flagstr)
 	}
 	for (ite = 0; ite < len; ite++)
 	{
-		rem = num % 10;
-		num = num / 10;
+		rem = unsigned_num % 10;
+		unsigned_num = unsigned_num / 10;
 		tmpstring[len - (ite + 1)] = rem + '0';
 	}
 	tmpstring[len] = '\0';
 	resultstring = flags_handler(flagstr, tmpstring, is_negative);
+	free(tmpstring);
 	if (resultstring == NULL)
 		return (NULL);
 	return (resultstring);
@@ -93,7 +99,6 @@ char *flags_handler(char *flags, char *oristring, int is_negative)
 			short_long_done = 1;
 		else
 			return (NULL);
-
 		itef++;
 	}
 	return (final_string_generator(oristring, flagstr, is_negative));
@@ -115,7 +120,7 @@ char *final_string_generator(char *oristring, int flagstr[], int is_negative)
 	while (oristring[count] != '\0')
 		count++;
 	teststring = _calloc(sizeof(char), count + 1 + flagstr[3] +
-			     flagstr[4] + flagstr[5] + 1);
+	   flagstr[4] + flagstr[5] + 1);
 	if (flagstr[0] != 0)
 	{
 		zeros = flagstr[0] - count;
