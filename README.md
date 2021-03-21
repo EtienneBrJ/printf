@@ -6,6 +6,7 @@
 _printf is a mimic of the function *printf* from the *<stdlib.h>*.
 Our function uses a **buffer** in order to call *write* as little as possible.
 The function also handles field-width and precision.
+
 On success, _printf print a **string**, or return -1 if the string **FORMAT** is empty or if any errors occurs.
 
 ## OPTIONS
@@ -25,7 +26,7 @@ On success, _printf print a **string**, or return -1 if the string **FORMAT** is
 
        - B : convert a decimal number in binary
 
-### Exemple
+### For exemples
 
     _printf("%s School\n", "Holberton");
 
@@ -50,4 +51,4 @@ will print
      00150
 
 
-in collaboration with [Etienne](https://github.com/EtienneBrJ "GitHub") for HolbertonSchool projects.
+in collaboration with [Etienne](https://github.com/EtienneBrJ "GitHub") for Holberton projects.
