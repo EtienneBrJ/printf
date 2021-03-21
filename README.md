@@ -6,9 +6,7 @@
 _printf is a mimic of the function *printf* from the *<stdlib.h>*.
 Our function uses a **buffer** in order to call *write* as little as possible.
 The function also handles field-width and precision.
-
-	     On success, _printf print a **string**,
-       	     or Return -1 if the string **FORMAT** is empty or if any errors occurs.
+On success, _printf print a **string**, or return -1 if the string **FORMAT** is empty or if any errors occurs.
 
 ## OPTIONS
        Format can contain conversion specifier. These starts with '%' and are followed by :
@@ -29,18 +27,27 @@ The function also handles field-width and precision.
 
 ### Exemple
 
-_printf("%s School\n", "Holberton");
-_printf("%r\n", "4days");
-_printf("%R\n", "Cisfun?");
-_printf("%b\n", 12);
-_printf("%05d\n", 150);
+    _printf("%s School\n", "Holberton");
+
+    _printf("%r\n", "4days");
+
+    _printf("%R\n", "Cisfun?");
+
+    _printf("%b\n", 12);
+
+    _printf("%05d\n", 150);
 
 will print
 
-Holberton School
-syad4
-Pvfsha?
-1100
-00150
+     Holberton School
 
-#### *with [Etienne](https://github.com/EtienneBrJ "GitHub") for Holberton.*
+     syad4
+
+     Pvfsha?
+
+     1100
+
+     00150
+
+
+in collaboration with [Etienne](https://github.com/EtienneBrJ "GitHub") for HolbertonSchool projects.
